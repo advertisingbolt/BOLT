@@ -767,7 +767,7 @@
             <div class="footer-container">
                 <div class="footer-column">
                     <h3>BOLT</h3>
-                    <p>Building the future of the web with innovative Web 3.0 solutions.</p>
+                    <p>Empowering D2C brands with innovative digital solutions for growth and engagement.</p>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
@@ -793,14 +793,14 @@
         </div>
     </footer>
 
-    <!-- Firebase SDK -->
+   
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Initialize Firebase
+      
         const firebaseConfig = {
             apiKey: "AIzaSyAkDl3ckFSXDHlZpyR0s7IZ1UTSX8Z6hSY",
   authDomain: "bolt-54408.firebaseapp.com",
@@ -811,20 +811,20 @@
   measurementId: "G-6YD4D3514J"
         };
         
-        // Initialize Firebase
+        
         firebase.initializeApp(firebaseConfig);
         
-        // Initialize Firestore
+        
         const db = firebase.firestore();
 
-        // Initialize AOS
+        
         AOS.init({
             duration: 1000,
             once: true,
             offset: 100
         });
 
-        // Particle.js Configuration
+       
         particlesJS('particles-js', {
             particles: {
                 number: {
@@ -882,7 +882,7 @@
             retina_detect: true
         });
 
-        // Mobile Menu Toggle
+      
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
 
@@ -891,7 +891,7 @@
             mobileMenuBtn.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
         });
 
-        // Smooth Scroll
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -913,7 +913,7 @@
             });
         });
 
-        // Scroll Progress Bar
+       
         const scrollProgress = document.getElementById('scrollProgress');
         window.addEventListener('scroll', () => {
             const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -921,7 +921,7 @@
             scrollProgress.style.transform = `scaleX(${scrolled / 100})`;
         });
 
-        // Form Submission with Firebase
+        
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
@@ -933,7 +933,7 @@
                 button.innerHTML = '<span class="loading"></span>';
                 button.disabled = true;
 
-                // Get form values
+               
                 const name = document.getElementById('name').value;
                 const email = document.getElementById('email').value;
                 const appointmentDate = document.getElementById('appointment-date').value;
@@ -941,7 +941,7 @@
                 const phone = document.getElementById('phone').value;
                 const message = document.getElementById('message').value;
 
-                // Save to Firestore
+                
                 db.collection('contacts').add({
                     name: name,
                     email: email,
@@ -972,7 +972,7 @@
             });
         }
 
-        // Stats Animation
+        
         const observerOptions = {
             threshold: 0.5
         };
