@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOLT - D2C Growth & Development</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #4d9fff;
+            --primary-dark: #3a7fcf;
+            --primary-gradient: linear-gradient(135deg, #4d9fff, #2d7ae5);
+            --bg-dark: #121212;
+            --bg-darker: #0a0a0a;
+            --text: #ffffff;
+            --text-muted: #cccccc;
+            --border: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glass Effect */
+        .glass-nav {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Logo */
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary), #64b5f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-link {
+            position: relative;
+            color: var(--text);
+            text-decoration: none;
+            padding: 5px 0;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.highlight {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+        }
+
+        .nav-link.highlight::after {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 120px 5% 80px;
+            background: radial-gradient(circle at top right, rgba(77, 159, 255, 0.1), transparent 70%);
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary), #64b5f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient 8s ease infinite;
+        }
+
+        .hero h2 {
+            font-size: 36px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        /* Button Styles */
+        .cta-button {
+            position: relative;
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: var(--text);
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .button-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            transform: translate(-100%, -100%);
+            transition: transform 0.6s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(77, 159, 255, 0.3);
+        }
+
+        .cta-button:hover .button-glow {
+            transform: translate(0, 0);
+        }
+
+        /* Hero Image */
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .floating-cube {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .cube-outline {
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { stroke-opacity: 1; }
+            50% { stroke-opacity: 0.5; }
+        }
+
+        /* Particles */
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* Services Section */
+        .services {
+            background: linear-gradient(to bottom, var(--bg-dark), var(--bg-darker));
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, var(--primary), #64b5f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 5%;
+        }
+
+        .service-card {
+            background: rgba(34, 34, 34, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .service-icon img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .service-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .service-description {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 100px 5%;
+            background: linear-gradient(45deg, rgba(77, 159, 255, 0.1), transparent);
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 72px;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--primary), #64b5f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .stat-number.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-text {
+            font-size: 24px;
+            color: var(--text-muted);
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 100px 5%;
+            background: linear-gradient(to bottom, var(--bg-dark), var(--bg-darker));
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info,
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(34, 34, 34, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(77, 159, 255, 0.3);
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Enhanced Footer Section */
+        footer {
+            padding: 60px 5% 30px;
+            background: linear-gradient(to bottom, #0f0f0f, #050505);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-gradient);
+        }
+
+        footer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(77, 159, 255, 0.05) 0%, transparent 60%);
+            z-index: -1;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .footer-column {
+            position: relative;
+            padding: 20px;
+            border-radius: 12px;
+            background: rgba(20, 20, 20, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .footer-column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(77, 159, 255, 0.1);
+            border-color: rgba(77, 159, 255, 0.2);
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 3px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+            transition: transform 0.2s ease;
+        }
+
+        .footer-links li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-links a:hover::before {
+            transform: scale(1.5);
+            background: var(--primary-gradient);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) rotate(5deg);
+            border-color: transparent;
+        }
+
+        .social-icon:hover::before {
+            opacity: 1;
+        }
+
+        .social-icon i {
+            color: var(--text-muted);
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover i {
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 14px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .copyright::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 45px;
+            height: 45px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            z-index: 100;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(77, 159, 255, 0.4);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Particles Animation */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 120px 5% 60px;
+            }
+
+            .hero-content {
+                margin-bottom: 60px;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(26, 26, 26, 0.95);
+                height: 0;
+                overflow: hidden;
+                transition: height 0.3s ease;
+            }
+
+            nav.active {
+                height: auto;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 20px 0;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .floating-cube {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: var(--text);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            transform-origin: 0 50%;
+            transform: scaleX(0);
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Header -->
+    <header class="glass-nav">
+        <div class="logo">BOLT</div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        <nav id="mainNav">
+            <ul>
+                <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
+                <li><a href="#work" class="nav-link">Work</a></li>
+                <li><a href="#career" class="nav-link">Career</a></li>
+                <li><a href="partner.html" class="nav-link">Partnerships</a></li>
+                <li>
+                    <a href="https://wa.me/9322806598" class="nav-link highlight" target="_blank">
+                        Chat on WhatsApp
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-right">
+            <h1>Scaling your <span class="gradient-text">D2C Brand</span></h1>
+            <h2>Growth and making you go viral</h2>
+            <p>Build community. Influence through Social Media. Craft Value.</p>
+            <a href="#contact" class="cta-button">
+                <span>REQUEST A FREE PROPOSAL</span>
+                <div class="button-glow"></div>
+            </a>
+        </div>
+        <div class="hero-image" data-aos="fade-left">
+            <div class="floating-cube">
+                <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="cube-outline" d="M150 30L270 100V240L150 310L30 240V100L150 30Z" stroke="url(#gradient)" stroke-width="5" fill="none"/>
+                    <path class="cube-inner" d="M150 30V170M150 170L270 100M150 170L30 100" stroke="url(#gradient)" stroke-width="5"/>
+                    <path class="cube-inner" d="M150 310V170" stroke="url(#gradient)" stroke-width="5"/>
+                    <path class="cube-face" d="M90 70L210 140V280L90 210V70Z" fill="url(#gradient)" fill-opacity="0.2"/>
+                    <path class="cube-edges" d="M210 140L90 70M210 140V280M210 140L150 170M90 210L150 170M90 210V70" stroke="url(#gradient)" stroke-width="5"/>
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#4d9fff"/>
+                            <stop offset="100%" style="stop-color:#4d9fff"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+        <div class="hero-particles" id="particles-js"></div>
+    </section>
+
+    <section class="services" id="capabilities">
+        <h2 class="section-title" data-aos="fade-up">Capabilities</h2>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon">
+                    <img src="community distribution.png" alt="Community Distribution">
+                </div>
+                <h3 class="service-title">Community Distribution</h3>
+                <p class="service-description">We know where the target audience is, how to reel them in, and what makes them stick around. This is why we can drive organic, viral conversations on WhatsApp, Telegram & Discord.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon">
+                    <img src="community bulding.png" alt="Community Building">
+                </div>
+                <h3 class="service-title">Community Building</h3>
+                <p class="service-description">Strategic crypto community building and management have been the driving force behind some of the biggest, most successful Web 3.0 projects to date. Viral social movements don't just happen by chance and we hold the brains to execute the same.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon">
+                    <img src="influencer m.png" alt="Influencer Marketing">
+                </div>
+                <h3 class="service-title">Influencer Marketing</h3>
+                <p class="service-description">Give your engagement and sales a Turbo-Boost with our strategic partnership with the influencers in the world of Web 3.0 that create a big buzz around your brand.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-icon">
+                    <img src="paid media.png" alt="Paid Media">
+                </div>
+                <h3 class="service-title">Paid Media</h3>
+                <p class="service-description">We think like editors, and we see journalists as our partners. Get on the inside track with leading Blockchain media, as we help shape public opinion, awareness, and trust for your brand.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="service-icon">
+                    <img src="seo.png" alt="SEO">
+                </div>
+                <h3 class="service-title">SEO</h3>
+                <p class="service-description">Search Engine Optimization is more than just keywords, and one size certainly does not fit all. We will draw from our best practices, and tailor a unique SEO approach specifically for your company.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="service-icon">
+                    <img src="paid marketing.png" alt="Paid Marketing">
+                </div>
+                <h3 class="service-title">Paid Marketing</h3>
+                <p class="service-description">Extend the reach of your brand through laser-focused social ads that amplify awareness and propel sales.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="700">
+                <div class="service-icon">
+                    <img src="social media mark.png" alt="Social Media Marketing">
+                </div>
+                <h3 class="service-title">Social Media Marketing</h3>
+                <p class="service-description">Let your audience get to know the best of you through social media. Not just Likes, Hashtags and Followers, drive real conversations, real engagements.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="800">
+                <div class="service-icon">
+                    <img src="video production.png" alt="Video Production">
+                </div>
+                <h3 class="service-title">Video Production</h3>
+                <p class="service-description">Cater to the multimedia hungry audience through high-quality video production content. We bring brands closer to their audiences by creating videos that inspire, engage and compel.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="900">
+                <div class="service-icon">
+                    <img src="web development.png" alt="Web Development">
+                </div>
+                <h3 class="service-title">Web Development</h3>
+                <p class="service-description">Optimize the customer experience with a feature-rich and intuitive website design that drives conversion.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="1000">
+                <div class="service-icon">
+                    <img src="pr mgmt.png" alt="PR Management">
+                </div>
+                <h3 class="service-title">PR Management</h3>
+                <p class="service-description">Leverage stellar media relations expertise to boost brand exposure and positively influence public opinion.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="1100">
+                <div class="service-icon">
+                    <img src="nft creation.png" alt="NFT Creation">
+                </div>
+                <h3 class="service-title">NFT Creation</h3>
+                <p class="service-description">Our team of Web3 experts will create a data-driven, highly personalized strategy to produce your own NFT!</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="1200">
+                <div class="service-icon">
+                    <img src="custom metaverse design.png" alt="Custom Metaverse Design">
+                </div>
+                <h3 class="service-title">Custom Metaverse Design</h3>
+                <p class="service-description">Let us help you deliver a virtual user experience to your customers like never before. Make your business experiential, immersive and yet, easily accessible for masses.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Impact</h2>
+            <div class="stats-container">
+                <div class="stat-item" data-aos="fade-up">
+                    <div class="stat-number" data-suffix="+">10+</div>
+                    <div class="stat-text">Million Impressions</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-number" data-suffix="+">25+</div>
+                    <div class="stat-text">Clients Served</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-number" data-suffix="+">100+</div>
+                    <div class="stat-text">Partners across the globe</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="600">
+                    <div class="stat-number" data-suffix="+">500+</div>
+                    <div class="stat-text">Leads Converted</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info" data-aos="fade-right">
+                <h3>Ready to start your journey with us?</h3>
+                <p>Reach out to us for a free consultation about your project.</p>
+            </div>
+            <div class="contact-form" data-aos="fade-left">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointment-date">Appointment Date</label>
+                        <input type="date" id="appointment-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointment-time">Appointment Time</label>
+                        <input type="time" id="appointment-time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">
+                        <span>Send Message</span>
+                        <div class="button-glow"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About BOLT</h3>
+                <p>Empowering D2C brands with innovative digital solutions for growth and engagement.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/bolt_media.in?igsh=dW0yaXllMmppc243&utm_source=qr" class="social-icon" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/bolt-advertising-media-ltd/" class="social-icon" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#capabilities">Capabilities</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#career">Career</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>&copy; 2025 BOLT. All rights reserved.</p>
+            </div>
+            <div class="back-to-top" id="backToTop">
+                <i class="fas fa-chevron-up"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAkDl3ckFSXDHlZpyR0s7IZ1UTSX8Z6hSY",
+            authDomain: "bolt-54408.firebaseapp.com",
+            projectId: "bolt-54408",
+            storageBucket: "bolt-54408.firebasestorage.app",
+            messagingSenderId: "88291790006",
+            appId: "1:88291790006:web:259387f2de1d7b164eaa17",
+            measurementId: "G-6YD4D3514J"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        const db = firebase.firestore();
+
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 50,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#4d9fff'
+                },
+                shape: {
+                    type: 'circle'
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#4d9fff',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.textContent = '☰';
+                }
+            });
+        });
+
+        const scrollProgress = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollProgress.style.transform = `scaleX(${scrolled / 100})`;
+        });
+
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const button = this.querySelector('button[type="submit"]');
+                const originalText = button.innerHTML;
+
+                button.innerHTML = '<span class="loading"></span>';
+                button.disabled = true;
+
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const appointmentDate = document.getElementById('appointment-date').value;
+                const appointmentTime = document.getElementById('appointment-time').value;
+                const phone = document.getElementById('phone').value;
+                const message = document.getElementById('message').value;
+
+                db.collection('contacts').add({
+                    name: name,
+                    email: email,
+                    appointmentDate: appointmentDate,
+                    appointmentTime: appointmentTime,
+                    phone: phone,
+                    message: message,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                })
+                .then(() => {
+                    button.innerHTML = '✓ Message Sent!';
+                    contactForm.reset();
+
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.disabled = false;
+                    }, 2000);
+                })
+                .catch((error) => {
+                    console.error("Error adding document: ", error);
+                    button.innerHTML = '❌ Error! Try Again';
+
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.disabled = false;
+                    }, 2000);
+                });
+            });
+        }
+
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+
+            stats.forEach(stat => {
+                const targetValue = parseInt(stat.textContent);
+                let currentValue = 0;
+                const duration = 2000;
+                const increment = targetValue / (duration / 16);
+                const suffix = stat.getAttribute('data-suffix') || '';
+
+                function updateCounter() {
+                    if (currentValue < targetValue) {
+                        currentValue += increment;
+                        stat.textContent = Math.floor(currentValue) + suffix;
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        stat.textContent = targetValue + suffix;
+                    }
+                }
+
+                stat.classList.add('visible');
+                updateCounter();
+            });
+        }
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
