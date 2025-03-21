@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE
+html >
+  <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -757,6 +758,157 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Simplified Testimonials Section */
+        .testimonials {
+            padding: 80px 5%;
+            position: relative;
+            z-index: 1;
+            background: rgba(18, 18, 18, 0.8);
+        }
+
+        .testimonials-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            background: linear-gradient(45deg, var(--primary), #64b5f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .testimonials-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 3px;
+        }
+
+        /* Testimonial Slider */
+        .testimonial-slider-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            padding: 20px 0;
+            background: rgba(25, 25, 25, 0.6);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .testimonial-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-item {
+            min-width: 100%;
+            padding: 30px;
+            position: relative;
+        }
+
+        .testimonial-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-image {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-message {
+            color: var(--text);
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+            font-style: italic;
+            max-width: 90%;
+        }
+
+        .testimonial-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .testimonial-description {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Slider Navigation */
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 15px;
+        }
+
+        .testimonial-nav-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid rgba(77, 159, 255, 0.3);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-nav-btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            gap: 8px;
+        }
+
+        .testimonial-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-dot:hover {
+            background: rgba(77, 159, 255, 0.5);
+        }
+
+        .testimonial-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: block;
@@ -793,8 +945,27 @@
                 grid-template-columns: 1fr;
             }
 
-            .media-gallery-title {
+            .media-gallery-title, .testimonials-title {
                 font-size: 28px;
+            }
+
+            .testimonial-item {
+                padding: 20px 15px;
+            }
+
+            .testimonial-message {
+                font-size: 16px;
+                max-width: 100%;
+            }
+
+            .testimonial-image {
+                width: 70px;
+                height: 70px;
+            }
+
+            .testimonial-nav-btn {
+                width: 36px;
+                height: 36px;
             }
 
             .footer-content {
@@ -855,12 +1026,36 @@
                 <div class="loading-spinner"></div>
             </div>
         </div>
-        
+
         <!-- Video Modal -->
         <div class="video-modal" id="videoModal">
             <div class="video-container">
                 <div class="close-modal" id="closeModal">×</div>
                 <div id="videoPlayer"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section - SIMPLIFIED -->
+    <section class="testimonials">
+        <h2 class="testimonials-title">Testimonials</h2>
+
+        <div class="testimonial-slider-container">
+            <div class="testimonial-slider" id="testimonialSlider">
+                <!-- Testimonials will be loaded here -->
+            </div>
+
+            <div class="testimonial-nav">
+                <button class="testimonial-nav-btn" id="prevTestimonial">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="testimonial-nav-btn" id="nextTestimonial">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="testimonial-dots" id="testimonialDots">
+                <!-- Dots will be generated here -->
             </div>
         </div>
     </section>
@@ -927,11 +1122,11 @@
         // Firebase configuration
         const firebaseConfig = {
            apiKey: "AIzaSyAKEIBthV_wcX0Omzqk97tITFqMx8hRGVA",
-  authDomain: "bolt-uplords.firebaseapp.com",
-  projectId: "bolt-uplords",
-  storageBucket: "bolt-uplords.firebasestorage.app",
-  messagingSenderId: "199484285040",
-  appId: "1:199484285040:web:5a28f158b5541cadad54b5"
+           authDomain: "bolt-uplords.firebaseapp.com",
+           projectId: "bolt-uplords",
+           storageBucket: "bolt-uplords.firebasestorage.app",
+           messagingSenderId: "199484285040",
+           appId: "1:199484285040:web:5a28f158b5541cadad54b5"
         };
 
         // Initialize Firebase
@@ -941,7 +1136,7 @@
         // Function to extract YouTube Video ID
         function getYouTubeID(url) {
             if (!url) return null;
-            
+
             if (url.includes("youtu.be/")) {
                 return url.split("youtu.be/")[1].split("?")[0];
             } else if (url.includes("watch?v=")) {
@@ -979,13 +1174,13 @@
         // Fetch media from Firestore
         async function fetchMedia() {
             const gallery = document.getElementById("gallery");
-            
+
             try {
                 // Clear loading indicator
                 gallery.innerHTML = '';
-                
+
                 const querySnapshot = await getDocs(collection(db, "uploads"));
-                
+
                 if (querySnapshot.empty) {
                     gallery.innerHTML = `
                         <div style="grid-column: 1/-1; text-align: center; padding: 50px 20px;">
@@ -1016,7 +1211,7 @@
                                 <p class="media-description">${data.description || 'No description available'}</p>
                             </div>
                         `;
-                        
+
                         mediaItem.addEventListener('click', () => {
                             openVideoModal(videoID);
                         });
@@ -1047,8 +1242,177 @@
             }
         }
 
-        // Execute the fetch function
+        // Fetch testimonials from Firestore
+        async function fetchTestimonials() {
+            const testimonialSlider = document.getElementById("testimonialSlider");
+            const testimonialDots = document.getElementById("testimonialDots");
+
+            try {
+                // Clear loading indicator
+                testimonialSlider.innerHTML = '';
+                testimonialDots.innerHTML = '';
+
+                const querySnapshot = await getDocs(collection(db, "testimonials"));
+
+                if (querySnapshot.empty) {
+                    testimonialSlider.innerHTML = `
+                        <div class="testimonial-item">
+                            <div class="testimonial-content">
+                                <i class="fas fa-comment-dots" style="font-size: 60px; color: var(--primary); margin-bottom: 20px; opacity: 0.7;"></i>
+                                <h3 style="font-size: 24px; margin-bottom: 15px;">No Testimonials Available</h3>
+                                <p style="color: var(--text-muted);">Check back soon for updates to our testimonials section.</p>
+                            </div>
+                        </div>
+                    `;
+
+                    // Hide navigation if no testimonials
+                    document.querySelector('.testimonial-nav').style.display = 'none';
+                    return;
+                }
+
+                let testimonials = [];
+                querySnapshot.forEach((doc) => {
+                    testimonials.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
+                });
+
+                // Create testimonial slides
+                testimonials.forEach((testimonial, index) => {
+                    const testimonialItem = document.createElement("div");
+                    testimonialItem.classList.add("testimonial-item");
+
+                    testimonialItem.innerHTML = `
+                        <div class="testimonial-content">
+                            ${testimonial.imageUrl ? `<img src="${testimonial.imageUrl}" alt="${testimonial.name || 'Testimonial'}" class="testimonial-image">` : ''}
+                            <p class="testimonial-message">${testimonial.message || 'No message available'}</p>
+                            <h3 class="testimonial-name">${testimonial.name || 'Anonymous'}</h3>
+                            <p class="testimonial-description">${testimonial.description || 'No description available'}</p>
+                        </div>
+                    `;
+
+                    testimonialSlider.appendChild(testimonialItem);
+
+                    // Create dot for this testimonial
+                    const dot = document.createElement("div");
+                    dot.classList.add("testimonial-dot");
+                    if (index === 0) dot.classList.add("active");
+
+                    dot.addEventListener("click", () => {
+                        currentTestimonial = index;
+                        updateTestimonialSlider();
+                    });
+
+                    testimonialDots.appendChild(dot);
+                });
+
+                // Hide navigation if only one testimonial
+                if (testimonials.length <= 1) {
+                    document.querySelector('.testimonial-nav').style.display = 'none';
+                    document.querySelector('.testimonial-dots').style.display = 'none';
+                } else {
+                    // Initialize testimonial slider
+                    initTestimonialSlider();
+                }
+            } catch (error) {
+                console.error("Error fetching testimonials:", error);
+                testimonialSlider.innerHTML = `
+                    <div class="testimonial-item">
+                        <div class="testimonial-content">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 60px; color: #ff4d4d; margin-bottom: 20px;"></i>
+                            <h3 style="font-size: 24px; margin-bottom: 15px;">Error Loading Testimonials</h3>
+                            <p style="color: var(--text-muted);">There was a problem loading the testimonials. Please try again later.</p>
+                        </div>
+                    </div>
+                `;
+
+                // Hide navigation if error
+                document.querySelector('.testimonial-nav').style.display = 'none';
+                document.querySelector('.testimonial-dots').style.display = 'none';
+            }
+        }
+
+        // Testimonial Slider Functionality
+        let currentTestimonial = 0;
+        let testimonialInterval;
+
+        function initTestimonialSlider() {
+            const prevBtn = document.getElementById('prevTestimonial');
+            const nextBtn = document.getElementById('nextTestimonial');
+
+            prevBtn.addEventListener('click', prevTestimonial);
+            nextBtn.addEventListener('click', nextTestimonial);
+
+            // Auto-advance testimonials
+            startTestimonialInterval();
+
+            // Pause auto-advance on hover
+            const sliderContainer = document.querySelector('.testimonial-slider-container');
+            sliderContainer.addEventListener('mouseenter', () => {
+                clearInterval(testimonialInterval);
+            });
+
+            sliderContainer.addEventListener('mouseleave', () => {
+                startTestimonialInterval();
+            });
+        }
+
+        function startTestimonialInterval() {
+            clearInterval(testimonialInterval);
+            testimonialInterval = setInterval(() => {
+                nextTestimonial();
+            }, 5000);
+        }
+
+        function prevTestimonial() {
+            const testimonialItems = document.querySelectorAll('.testimonial-item');
+            if (testimonialItems.length <= 1) return;
+
+            currentTestimonial--;
+            if (currentTestimonial < 0) {
+                currentTestimonial = testimonialItems.length - 1;
+            }
+
+            updateTestimonialSlider();
+        }
+
+        function nextTestimonial() {
+            const testimonialItems = document.querySelectorAll('.testimonial-item');
+            if (testimonialItems.length <= 1) return;
+
+            currentTestimonial++;
+            if (currentTestimonial >= testimonialItems.length) {
+                currentTestimonial = 0;
+            }
+
+            updateTestimonialSlider();
+        }
+
+        function updateTestimonialSlider() {
+            const slider = document.getElementById('testimonialSlider');
+            const testimonialItems = document.querySelectorAll('.testimonial-item');
+            let width = testimonialItems[0].offsetWidth;
+            let min = 0;
+            let height = testimonialItems[0].offsetHeight;
+            let from = 0;
+            let transform = 0;
+            slider.style.transform = `translateX(-${currentTestimonial * 100}%)`;
+
+            // Update dots
+            const dots = document.querySelectorAll('.testimonial-dot');
+            dots.forEach((dot, index) => {
+                if (index === currentTestimonial) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Execute the fetch functions
         fetchMedia();
+        fetchTestimonials();
     </script>
     <script>
         // Initialize AOS
@@ -1171,7 +1535,7 @@
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const statValue = parseInt(entry.target.dataset.value);
+                    const statValue = Number.parseInt(entry.target.dataset.value);
                     animateValue(entry.target, 0, statValue, 2000);
                     statsObserver.unobserve(entry.target);
                 }
@@ -1229,3 +1593,4 @@
     </script>
 </body>
 </html>
+
