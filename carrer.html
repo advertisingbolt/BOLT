@@ -157,7 +157,7 @@
         .section-title h2 {
             font-size: 36px;
             font-weight: 700;
-            color: var(--text-light);
+            color: var(--text);
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
@@ -260,12 +260,12 @@
             margin-bottom: 15px;
             line-height: 1.4;
             font-weight: 700;
-            color: var(--text-light);
+            color: var(--text);
             transition: color 0.3s ease;
         }
 
         .job-position-card:hover .job-position-title {
-            color: var(--primary-light);
+            color: var(--primary);
         }
 
         .job-position-description {
@@ -302,7 +302,7 @@
         .job-requirements h4 {
             font-size: 16px;
             margin-bottom: 10px;
-            color: var(--text-light);
+            color: var(--text);
         }
 
         .job-requirements ul {
@@ -396,6 +396,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
         }
 
         .cta-email:hover {
@@ -687,196 +688,6 @@
             pointer-events: none;
         }
 
-        /* Media Gallery Styles - IMPROVED */
-        .media-gallery {
-            padding: 80px 5%;
-            position: relative;
-            z-index: 1;
-        }
-
-        .media-gallery-title {
-            font-size: 36px;
-            margin-bottom: 40px;
-            text-align: center;
-            background: linear-gradient(45deg, var(--primary), #64b5f6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .media-gallery-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary-gradient);
-            border-radius: 3px;
-        }
-
-        .media-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .media-item {
-            background: rgba(34, 34, 34, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .media-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(77, 159, 255, 0.2);
-            border-color: var(--primary);
-        }
-
-        .media-thumbnail {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .media-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.5s ease;
-        }
-
-        .media-item:hover .media-thumbnail img {
-            transform: scale(1.1);
-        }
-
-        /* Video Play Button */
-        .media-thumbnail.video::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: rgba(77, 159, 255, 0.8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            opacity: 0.9;
-        }
-
-        .media-thumbnail.video::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 53%;
-            transform: translate(-50%, -50%);
-            width: 0;
-            height: 0;
-            border-top: 12px solid transparent;
-            border-bottom: 12px solid transparent;
-            border-left: 20px solid white;
-            z-index: 1;
-            transition: all 0.3s ease;
-        }
-
-        .media-item:hover .media-thumbnail.video::after {
-            background: rgba(77, 159, 255, 1);
-            transform: translate(-50%, -50%) scale(1.1);
-            box-shadow: 0 0 20px rgba(77, 159, 255, 0.5);
-        }
-
-        .media-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            background: linear-gradient(to bottom, rgba(34, 34, 34, 0.8), rgba(20, 20, 20, 0.9));
-        }
-
-        .media-title {
-            font-size: 20px;
-            margin-bottom: 15px;
-            line-height: 1.4;
-            color: white;
-            font-weight: 600;
-        }
-
-        .media-description {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            flex-grow: 1;
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        /* Video Modal */
-        .video-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .video-modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .video-container {
-            width: 80%;
-            max-width: 900px;
-            position: relative;
-        }
-
-        .video-container iframe {
-            width: 100%;
-            aspect-ratio: 16/9;
-            border: none;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .close-modal:hover {
-            color: var(--primary);
-            transform: rotate(90deg);
-        }
-
         /* Loading Animation */
         .loading {
             display: flex;
@@ -898,155 +709,86 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Simplified Testimonials Section */
-        .testimonials {
-            padding: 80px 5%;
-            position: relative;
-            z-index: 1;
-            background: rgba(18, 18, 18, 0.8);
-        }
-
-        .testimonials-title {
-            font-size: 36px;
-            margin-bottom: 40px;
+        /* No Jobs Message */
+        .no-jobs-message {
             text-align: center;
-            background: linear-gradient(45deg, var(--primary), #64b5f6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
+            padding: 40px;
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            grid-column: 1 / -1;
         }
 
-        .testimonials-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary-gradient);
-            border-radius: 3px;
-        }
-
-        /* Testimonial Slider */
-        .testimonial-slider-container {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-            padding: 20px 0;
-            background: rgba(25, 25, 25, 0.6);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .testimonial-slider {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .testimonial-item {
-            min-width: 100%;
-            padding: 30px;
-            position: relative;
-        }
-
-        .testimonial-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-image {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            object-fit: cover;
-            border: 3px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .testimonial-message {
-            color: var(--text);
-            margin-bottom: 20px;
-            font-size: 18px;
-            line-height: 1.6;
-            font-style: italic;
-            max-width: 90%;
-        }
-
-        .testimonial-name {
-            font-size: 20px;
-            font-weight: bold;
+        .no-jobs-message i {
+            font-size: 48px;
             color: var(--primary);
-            margin-bottom: 5px;
+            margin-bottom: 20px;
         }
 
-        .testimonial-description {
+        .no-jobs-message h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .no-jobs-message p {
             color: var(--text-muted);
-            font-size: 14px;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        /* Slider Navigation */
-        .testimonial-nav {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            gap: 15px;
+        /* Error Message */
+        .error-message {
+            text-align: center;
+            padding: 40px;
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            grid-column: 1 / -1;
         }
 
-        .testimonial-nav-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(30, 30, 30, 0.8);
-            border: 1px solid rgba(77, 159, 255, 0.3);
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+        .error-message i {
+            font-size: 48px;
+            color: #ff4d4d;
+            margin-bottom: 20px;
         }
 
-        .testimonial-nav-btn:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
+        .error-message h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--text);
         }
 
-        .testimonial-dots {
-            display: flex;
-            justify-content: center;
-            margin-top: 15px;
-            gap: 8px;
+        .error-message p {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        .testimonial-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .job-positions-container {
+                flex-direction: column;
+            }
+            
+            .cta {
+                max-width: 100%;
+                margin-top: 30px;
+            }
         }
 
-        .testimonial-dot:hover {
-            background: rgba(77, 159, 255, 0.5);
-        }
-
-        .testimonial-dot.active {
-            background: var(--primary);
-            transform: scale(1.2);
+        @media (max-width: 992px) {
+            .job-positions-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .section-title h2 {
+                font-size: 32px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1064,11 +806,13 @@
                 height: 0;
                 overflow: hidden;
                 transition: height 0.3s ease;
+                z-index: 1000;
             }
 
             nav.active {
                 height: auto;
                 padding: 20px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
 
             nav ul {
@@ -1078,34 +822,23 @@
             }
 
             .hero h1 {
-                font-size: 40px;
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 16px;
             }
 
-            .media-grid {
+            .job-positions-grid {
                 grid-template-columns: 1fr;
             }
-
-            .media-gallery-title, .testimonials-title {
+            
+            .section-title h2 {
                 font-size: 28px;
             }
-
-            .testimonial-item {
-                padding: 20px 15px;
-            }
-
-            .testimonial-message {
+            
+            .section-title p {
                 font-size: 16px;
-                max-width: 100%;
-            }
-
-            .testimonial-image {
-                width: 70px;
-                height: 70px;
-            }
-
-            .testimonial-nav-btn {
-                width: 36px;
-                height: 36px;
             }
 
             .footer-content {
@@ -1125,9 +858,53 @@
             .copyright::before {
                 display: none;
             }
+        }
 
-            .video-container {
-                width: 95%;
+        @media (max-width: 480px) {
+            .glass-nav {
+                padding: 15px 5%;
+            }
+            
+            .logo {
+                font-size: 20px;
+            }
+            
+            .hero {
+                padding: 100px 5% 50px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .job-position-card {
+                padding: 20px;
+            }
+            
+            .job-position-title {
+                font-size: 20px;
+            }
+            
+            .filter-controls {
+                gap: 10px;
+            }
+            
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+            
+            .cta {
+                padding: 30px 20px;
+            }
+            
+            .cta h3 {
+                font-size: 22px;
+            }
+            
+            .cta-email {
+                font-size: 16px;
+                padding: 10px 20px;
             }
         }
     </style>
@@ -1142,10 +919,11 @@
         <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
         <nav id="mainNav">
             <ul>
-                <li><a href="index.html" class="nav-link">Capabilities</a></li>
+              <li><a href="index.html" class="nav-link">Capabilities</a></li>
                 <li><a href="work.html" class="nav-link">Work</a></li>
+                <li><a href="#" class="nav-link">Career</a></li>
+                <li><a href="#" class="nav-link">Partnerships</a></li>
                 <li><a href="#" class="nav-link highlight">Chat on WhatsApp</a></li>
-                <li><a href="partnerships.html" class="nav-link">Partnerships</a></li>
             </ul>
         </nav>
     </header>
@@ -1182,10 +960,14 @@
                 <i class="fas fa-paper-plane cta-icon"></i>
                 <h3>Ready to Apply?</h3>
                 <p>Send your resume and portfolio to our recruitment team</p>
-                <a href="mailto:career@blockwee.com" class="cta-email">
+                <!-- Fixed mail button with direct onclick attribute -->
+                <button 
+                    class="cta-email" 
+                    onclick="window.location.href='mailto:career@blockwee.com';"
+                >
                     <i class="fas fa-envelope"></i>
                     career@blockwee.com
-                </a>
+                </button>
             </div>
         </div>
     </section>
@@ -1220,6 +1002,11 @@
             </div>
         </div>
         <div class="back-to-top" id="backToTop">
+            <i class="fas fa-chevron-up"></i>
+        </div>
+    </footer>
+
+      id="backToTop">
             <i class="fas fa-chevron-up"></i>
         </div>
     </footer>
