@@ -4,901 +4,903 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOLT - Career Opportunities</title>
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-       :root {
-    --primary: #4d9fff;
-    --primary-dark: #3a7fcf;
-    --primary-gradient: linear-gradient(135deg, #4d9fff, #2d7ae5);
-    --bg-dark: #121212;
-    --bg-darker: #0a0a0a;
-    --text: #ffffff;
-    --text-muted: #cccccc;
-    --border: #333;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
-body {
-    background-color: var(--bg-dark);
-    color: var(--text);
-    overflow-x: hidden;
-    line-height: 1.6;
-}
-
-/* Glass Effect Nav */
-.glass-nav {
-    background: rgba(26, 26, 26, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    padding: 20px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: 800;
-    background: linear-gradient(45deg, var(--primary), #64b5f6);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: 2px;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-.nav-link {
-    color: var(--text);
-    text-decoration: none;
-    font-size: 16px;
-    position: relative;
-    padding: 5px 0;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
-
-.nav-link.highlight {
-    background: linear-gradient(45deg, var(--primary), var(--primary-dark));
-    padding: 8px 16px;
-    border-radius: 20px;
-    color: white;
-}
-
-/* Hero Section */
-.hero {
-    min-height: 60vh;
-    background: linear-gradient(135deg, rgba(77, 159, 255, 0.1), transparent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 5% 60px;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(77, 159, 255, 0.1) 0%, transparent 50%);
-    animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-}
-
-.hero h1 {
-    font-size: 64px;
-    margin-bottom: 20px;
-    background: linear-gradient(45deg, var(--primary), #64b5f6);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1s ease forwards;
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 50px;
-    position: relative;
-}
-
-.section-title h2 {
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 15px;
-    position: relative;
-    display: inline-block;
-}
-
-.section-title h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: var(--primary-gradient);
-    border-radius: 2px;
-}
-
-.section-title p {
-    color: var(--text-muted);
-    max-width: 600px;
-    margin: 0 auto;
-    font-size: 18px;
-}
-
-.job-positions {
-    padding: 80px 5%;
-    position: relative;
-    z-index: 1;
-}
-
-.job-positions-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.job-positions-grid {
-    flex: 2;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 30px;
-}
-
-.job-position-card {
-    background: rgba(26, 26, 26, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.4s ease;
-    cursor: pointer;
-    padding: 30px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.job-position-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: var(--primary-gradient);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-}
-
-.job-position-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(77, 159, 255, 0.2);
-    border-color: rgba(77, 159, 255, 0.3);
-    background: rgba(30, 30, 30, 0.95);
-}
-
-.job-position-card:hover::before {
-    transform: scaleX(1);
-}
-
-.job-badge {
-    display: inline-block;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-    background: rgba(77, 159, 255, 0.15);
-    color: var(--primary);
-    border: 1px solid rgba(77, 159, 255, 0.3);
-}
-
-.job-position-title {
-    font-size: 22px;
-    margin-bottom: 15px;
-    line-height: 1.4;
-    font-weight: 700;
-    color: var(--text);
-    transition: color 0.3s ease;
-}
-
-.job-position-card:hover .job-position-title {
-    color: var(--primary);
-}
-
-.job-position-description {
-    color: var(--text-muted);
-    margin-bottom: 20px;
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-.job-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.job-meta-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--text-muted);
-    font-size: 14px;
-}
-
-.job-meta-item i {
-    color: var(--primary);
-    font-size: 16px;
-}
-
-.job-requirements {
-    margin: 20px 0;
-}
-
-.job-requirements h4 {
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: var(--text);
-}
-
-.job-requirements ul {
-    list-style: none;
-    padding-left: 5px;
-}
-
-.job-requirements li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 8px;
-    color: var(--text-muted);
-    font-size: 14px;
-}
-
-.job-requirements li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 8px;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--primary);
-}
-
-.job-position-apply {
-    margin-top: auto;
-    padding-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.job-date {
-    color: var(--text-muted);
-    font-size: 13px;
-}
-
-.cta {
-    flex: 1;
-    background: var(--primary-gradient);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-radius: 16px;
-    padding: 40px 30px;
-    max-width: 350px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 15px 30px rgba(77, 159, 255, 0.2);
-}
-
-.cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.2), transparent 70%);
-}
-
-.cta h3 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.cta p {
-    font-size: 16px;
-    margin: 10px 0 25px;
-    opacity: 0.9;
-    position: relative;
-}
-
-.cta-email {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 600;
-    position: relative;
-    padding: 12px 25px;
-    border-radius: 30px;
-    background: rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    border: none;
-}
-
-.cta-email:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-3px);
-}
-
-.cta-icon {
-    font-size: 50px;
-    margin-bottom: 20px;
-    opacity: 0.9;
-}
-
-.filter-controls {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    padding: 10px 20px;
-    border-radius: 30px;
-    background: rgba(26, 26, 26, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.filter-btn:hover, .filter-btn.active {
-    background: var(--primary-gradient);
-    color: white;
-    border-color: transparent;
-}
-
-.footer {
-    padding: 80px 5% 30px;
-    background: linear-gradient(to bottom, #0f0f0f, #050505);
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--primary-gradient);
-}
-
-.footer::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 10% 20%, rgba(77, 159, 255, 0.05) 0%, transparent 60%);
-    z-index: -1;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.footer-column {
-    position: relative;
-    padding: 25px;
-    border-radius: 16px;
-    background: rgba(20, 20, 20, 0.5);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.footer-column:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(77, 159, 255, 0.1);
-    border-color: rgba(77, 159, 255, 0.2);
-}
-
-.footer-column h3 {
-    font-size: 20px;
-    margin-bottom: 25px;
-    color: var(--text);
-    position: relative;
-    padding-bottom: 12px;
-}
-
-.footer-column h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 3px;
-    background: var(--primary-gradient);
-    border-radius: 3px;
-}
-
-.footer-links {
-    list-style: none;
-}
-
-.footer-links li {
-    margin-bottom: 15px;
-    transition: transform 0.2s ease;
-}
-
-.footer-links li:hover {
-    transform: translateX(5px);
-}
-
-.footer-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.footer-links a::before {
-    content: '';
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    background: var(--primary);
-    border-radius: 50%;
-    transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: var(--primary);
-}
-
-.footer-links a:hover::before {
-    transform: scale(1.5);
-    background: var(--primary-gradient);
-}
-
-.social-links {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.social-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.social-icon::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--primary-gradient);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
-}
-
-.social-icon:hover {
-    transform: translateY(-5px) rotate(5deg);
-    border-color: transparent;
-}
-
-.social-icon:hover::before {
-    opacity: 1;
-}
-
-.social-icon i {
-    color: var(--text-muted);
-    font-size: 18px;
-    transition: color 0.3s ease;
-}
-
-.social-icon:hover i {
-    color: white;
-}
-
-.footer-bottom {
-    margin-top: 40px;
-    padding-top: 25px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    position: relative;
-}
-
-.copyright {
-    color: var(--text-muted);
-    font-size: 14px;
-    position: relative;
-    padding-left: 25px;
-}
-
-.copyright::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 15px;
-    height: 15px;
-    background: var(--primary-gradient);
-    border-radius: 50%;
-    opacity: 0.7;
-}
-
-.back-to-top {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    width: 45px;
-    height: 45px;
-    background: var(--primary-gradient);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    z-index: 100;
-}
-
-.back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.back-to-top:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(77, 159, 255, 0.4);
-}
-
-.mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text);
-    font-size: 24px;
-    cursor: pointer;
-}
-
-#particles-js {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-}
-
-.loading-spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(77, 159, 255, 0.3);
-    border-radius: 50%;
-    border-top-color: var(--primary);
-    animation: spin 1s ease-in-out infinite;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-.no-jobs-message {
-    text-align: center;
-    padding: 40px;
-    background: rgba(26, 26, 26, 0.8);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    grid-column: 1 / -1;
-}
-
-.no-jobs-message i {
-    font-size: 48px;
-    color: var(--primary);
-    margin-bottom: 20px;
-}
-
-.no-jobs-message h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: var(--text);
-}
-
-.no-jobs-message p {
-    color: var(--text-muted);
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.error-message {
-    text-align: center;
-    padding: 40px;
-    background: rgba(26, 26, 26, 0.8);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    grid-column: 1 / -1;
-}
-
-.error-message i {
-    font-size: 48px;
-    color: #ff4d4d;
-    margin-bottom: 20px;
-}
-
-.error-message h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: var(--text);
-}
-
-.error-message p {
-    color: var(--text-muted);
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-@media (max-width: 1200px) {
-    .job-positions-container {
-        flex-direction: column;
-    }
-
-    .cta {
-        max-width: 100%;
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 992px) {
-    .job-positions-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    }
-
-    .hero h1 {
-        font-size: 48px;
-    }
-
-    .section-title h2 {
-        font-size: 32px;
-    }
-}
-
-@media (max-width: 768px) {
-    .mobile-menu-btn {
-        display: block;
-    }
-
-    nav {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: rgba(26, 26, 26, 0.95);
-        padding: 0;
-        height: 0;
-        overflow: hidden;
-        transition: height 0.3s ease;
-        z-index: 1000;
-    }
-
-    nav.active {
-        height: auto;
-        padding: 20px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .hero h1 {
-        font-size: 36px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-
-    .job-positions-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .section-title h2 {
-        font-size: 28px;
-    }
-
-    .section-title p {
-        font-size: 16px;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-    }
-
-    .copyright {
-        padding-left: 0;
-    }
-
-    .copyright::before {
-        display: none;
-    }
-}
-
-@media (max-width: 480px) {
-    .glass-nav {
-        padding: 15px 5%;
-    }
-
-    .logo {
-        font-size: 20px;
-    }
-
-    .hero {
-        padding: 100px 5% 50px;
-    }
-
-    .hero h1 {
-        font-size: 32px;
-    }
-
-    .job-position-card {
-        padding: 20px;
-    }
-
-    .job-position-title {
-        font-size: 20px;
-    }
-
-    .filter-controls {
-        gap: 10px;
-    }
-
-    .filter-btn {
-        padding: 8px 15px;
-        font-size: 12px;
-    }
-
-    .cta {
-        padding: 30px 20px;
-    }
-
-    .cta h3 {
-        font-size: 22px;
-    }
-
-    .cta-email {
-        font-size: 16px;
-        padding: 10px 20px;
-    }
-}
-
+        :root {
+            --primary: #4d9fff;
+            --primary-dark: #3a7fcf;
+            --primary-gradient: linear-gradient(135deg, #4d9fff, #2d7ae5);
+            --bg-dark: #121212;
+            --bg-darker: #0a0a0a;
+            --text: #ffffff;
+            --text-muted: #cccccc;
+            --border: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Glass Effect Nav */
+        .glass-nav {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary), #64b5f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: block; /* Changed from fixed to block */
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 16px;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.highlight {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, rgba(77, 159, 255, 0.1), transparent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 5% 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(77, 159, 255, 0.1) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary), #64b5f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+
+        .job-positions {
+            padding: 80px 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .job-positions-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .job-positions-grid {
+            flex: 2;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .job-position-card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            padding: 30px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .job-position-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .job-position-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(77, 159, 255, 0.2);
+            border-color: rgba(77, 159, 255, 0.3);
+            background: rgba(30, 30, 30, 0.95);
+        }
+
+        .job-position-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .job-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            background: rgba(77, 159, 255, 0.15);
+            color: var(--primary);
+            border: 1px solid rgba(77, 159, 255, 0.3);
+        }
+
+        .job-position-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            font-weight: 700;
+            color: var(--text);
+            transition: color 0.3s ease;
+        }
+
+        .job-position-card:hover .job-position-title {
+            color: var(--primary);
+        }
+
+        .job-position-description {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .job-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .job-meta-item i {
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .job-requirements {
+            margin: 20px 0;
+        }
+
+        .job-requirements h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .job-requirements ul {
+            list-style: none;
+            padding-left: 5px;
+        }
+
+        .job-requirements li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .job-requirements li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .job-position-apply {
+            margin-top: auto;
+            padding-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .job-date {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .cta {
+            flex: 1;
+            background: var(--primary-gradient);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 16px;
+            padding: 40px 30px;
+            max-width: 350px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(77, 159, 255, 0.2);
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.2), transparent 70%);
+        }
+
+        .cta h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .cta p {
+            font-size: 16px;
+            margin: 10px 0 25px;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .cta-email {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            position: relative;
+            padding: 12px 25px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-email:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .cta-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .filter-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .footer {
+            padding: 80px 5% 30px;
+            background: linear-gradient(to bottom, #0f0f0f, #050505);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-gradient);
+        }
+
+        .footer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(77, 159, 255, 0.05) 0%, transparent 60%);
+            z-index: -1;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .footer-column {
+            position: relative;
+            padding: 25px;
+            border-radius: 16px;
+            background: rgba(20, 20, 20, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .footer-column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(77, 159, 255, 0.1);
+            border-color: rgba(77, 159, 255, 0.2);
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 3px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+            transition: transform 0.2s ease;
+        }
+
+        .footer-links li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-links a:hover::before {
+            transform: scale(1.5);
+            background: var(--primary-gradient);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) rotate(5deg);
+            border-color: transparent;
+        }
+
+        .social-icon:hover::before {
+            opacity: 1;
+        }
+
+        .social-icon i {
+            color: var(--text-muted);
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover i {
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 14px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .copyright::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        .back-to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 45px;
+            height: 45px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            z-index: 100;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(77, 159, 255, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(77, 159, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .no-jobs-message {
+            text-align: center;
+            padding: 40px;
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            grid-column: 1 / -1;
+        }
+
+        .no-jobs-message i {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .no-jobs-message h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .no-jobs-message p {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .error-message {
+            text-align: center;
+            padding: 40px;
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            grid-column: 1 / -1;
+        }
+
+        .error-message i {
+            font-size: 48px;
+            color: #ff4d4d;
+            margin-bottom: 20px;
+        }
+
+        .error-message h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .error-message p {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1200px) {
+            .job-positions-container {
+                flex-direction: column;
+            }
+
+            .cta {
+                max-width: 100%;
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .job-positions-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(26, 26, 26, 0.95);
+                padding: 0;
+                height: 0;
+                overflow: hidden;
+                transition: height 0.3s ease;
+                z-index: 1000;
+            }
+
+            nav.active {
+                height: auto;
+                padding: 20px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .job-positions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .section-title p {
+                font-size: 16px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .copyright {
+                padding-left: 0;
+            }
+
+            .copyright::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .glass-nav {
+                padding: 15px 5%;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .hero {
+                padding: 100px 5% 50px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .job-position-card {
+                padding: 20px;
+            }
+
+            .job-position-title {
+                font-size: 20px;
+            }
+
+            .filter-controls {
+                gap: 10px;
+            }
+
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+
+            .cta {
+                padding: 30px 20px;
+            }
+
+            .cta h3 {
+                font-size: 22px;
+            }
+
+            .cta-email {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <div id="particles-js"></div>
@@ -981,335 +983,345 @@ nav ul {
             <i class="fas fa-chevron-up"></i>
         </div>
     </footer>
+
+    <script>
+        // Initialize AOS (Animate on Scroll)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+                mobileMenuBtn.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Back to top button
+            const backToTopButton = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.textContent = '☰';
+                    }
+                });
+            });
+
+            // Initialize particles.js
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: '#4d9fff'
+                    },
+                    shape: {
+                        type: 'circle'
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: false,
+                        anim: {
+                            enable: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: false
+                        }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#4d9fff',
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: 'none',
+                        random: false,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: 'grab'
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: 'push'
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 140,
+                            line_linked: {
+                                opacity: 1
+                            }
+                        },
+                        push: {
+                            particles_nb: 4
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+
+            // Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyAKEIBthV_wcX0Omzqk97tITFqMx8hRGVA",
+                authDomain: "bolt-uplords.firebaseapp.com",
+                projectId: "bolt-uplords",
+                storageBucket: "bolt-uplords.firebasestorage.app",
+                messagingSenderId: "199484285040",
+                appId: "1:199484285040:web:5a28f158b5541cadad54b5"
+            };
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            const db = firebase.firestore();
+
+            // Format date function
+            function formatDate(timestamp) {
+                if (!timestamp) return 'N/A';
+
+                const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                return date.toLocaleDateString('en-US', options);
+            }
+
+            // Format requirements function
+            function formatRequirements(requirements) {
+                if (!requirements) return '';
+
+                if (typeof requirements === 'string') {
+                    const reqArray = requirements.split(/,|\n/).filter(item => item.trim() !== '');
+                    return reqArray.map(req => `<li>${req.trim()}</li>`).join('');
+                }
+
+                if (Array.isArray(requirements)) {
+                    return requirements.map(req => `<li>${req.trim()}</li>`).join('');
+                }
+
+                return '';
+            }
+
+            // Fetch job positions
+            async function fetchJobPositions() {
+                const jobPositionsGrid = document.getElementById('jobPositionsGrid');
+                const filterControls = document.getElementById('filterControls');
+
+                jobPositionsGrid.innerHTML = `
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                    </div>
+                `;
+
+                try {
+                    const querySnapshot = await db.collection("jobPositions").get();
+
+                    jobPositionsGrid.innerHTML = '';
+
+                    if (querySnapshot.empty) {
+                        jobPositionsGrid.innerHTML = `
+                            <div class="no-jobs-message">
+                                <i class="fas fa-briefcase"></i>
+                                <h3>No positions available</h3>
+                                <p>We don't have any open positions at the moment. Please check back later or send your resume for future opportunities.</p>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    const categories = new Set(['all']);
+
+                    const jobs = [];
+                    querySnapshot.forEach((doc) => {
+                        const data = doc.data();
+
+                        if (data.category) {
+                            categories.add(data.category.toLowerCase());
+                        }
+
+                        jobs.push({
+                            id: doc.id,
+                            ...data,
+                            category: data.category ? data.category.toLowerCase() : 'other'
+                        });
+                    });
+
+                    if (categories.size > 1) {
+                        const allButton = filterControls.querySelector('[data-filter="all"]');
+                        filterControls.innerHTML = '';
+                        filterControls.appendChild(allButton);
+
+                        categories.forEach(category => {
+                            if (category === 'all') return;
+
+                            const button = document.createElement('button');
+                            button.className = 'filter-btn';
+                            button.setAttribute('data-filter', category);
+                            button.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+
+                            button.addEventListener('click', () => {
+                                filterControls.querySelectorAll('.filter-btn').forEach(btn => {
+                                    btn.classList.remove('active');
+                                });
+                                button.classList.add('active');
+                                filterJobs(category);
+                            });
+
+                            filterControls.appendChild(button);
+                        });
+                    }
+
+                    jobs.forEach((job, index) => {
+                        const jobCard = document.createElement('div');
+                        jobCard.className = 'job-position-card';
+                        jobCard.setAttribute('data-category', job.category || 'other');
+                        jobCard.setAttribute('data-aos', 'fade-up');
+                        jobCard.setAttribute('data-aos-delay', (index * 100).toString());
+
+                        const requirementsList = formatRequirements(job.requirements);
+
+                        const formattedDate = formatDate(job.createdAt);
+
+                        jobCard.innerHTML = `
+                            <span class="job-badge">${job.category || 'General'}</span>
+                            <h3 class="job-position-title">${job.title || 'Untitled Position'}</h3>
+                            <p class="job-position-description">${job.description || 'No description available.'}</p>
+
+                            <div class="job-meta">
+                                ${job.location ? `
+                                <div class="job-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>${job.location}</span>
+                                </div>` : ''}
+                                <div class="job-meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Posted: ${formattedDate}</span>
+                                </div>
+                            </div>
+
+                            ${requirementsList ? `
+                            <div class="job-requirements">
+                                <h4>Requirements:</h4>
+                                <ul>
+                                    ${requirementsList}
+                                </ul>
+                            </div>` : ''}
+
+                            <div class="job-position-apply">
+                                <span class="job-date">${formattedDate}</span>
+                            </div>
+                        `;
+
+                        jobPositionsGrid.appendChild(jobCard);
+                    });
+
+                    // Initialize AOS
+                    if (typeof AOS !== 'undefined') {
+                        AOS.refresh();
+                    }
+
+                    const allFilterBtn = document.querySelector('[data-filter="all"]');
+                    if (allFilterBtn) {
+                        allFilterBtn.addEventListener('click', () => {
+                            filterControls.querySelectorAll('.filter-btn').forEach(btn => {
+                                btn.classList.remove('active');
+                            });
+                            allFilterBtn.classList.add('active');
+                            filterJobs('all');
+                        });
+                    }
+
+                } catch (error) {
+                    console.error('Error fetching job positions:', error);
+                    jobPositionsGrid.innerHTML = `
+                        <div class="error-message">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <h3>Error Loading Jobs</h3>
+                            <p>We encountered a problem while loading job positions. Please try again later.</p>
+                        </div>
+                    `;
+                }
+            }
+
+            // Filter jobs function
+            function filterJobs(category) {
+                const jobCards = document.querySelectorAll('.job-position-card');
+
+                jobCards.forEach(card => {
+                    if (category === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const cardCategory = card.getAttribute('data-category');
+                        if (cardCategory === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            }
+
+            // Initialize job positions
+            fetchJobPositions();
+        });
+    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: '#4d9fff'
-                },
-                shape: {
-                    type: 'circle'
-                },
-                opacity: {
-                    value: 0.5,
-                    random: false,
-                    anim: {
-                        enable: false
-                    }
-                },
-                size: {
-                    value: 3,
-                    random: true,
-                    anim: {
-                        enable: false
-                    }
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#4d9fff',
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: false,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false,
-                    attract: {
-                        enable: false,
-                        rotateX: 600,
-                        rotateY: 1200
-                    }
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'grab'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
-                },
-                modes: {
-                    grab: {
-                        distance: 140,
-                        line_linked: {
-                            opacity: 1
-                        }
-                    },
-                    push: {
-                        particles_nb: 4
-                    }
-                }
-            },
-            retina_detect: true
-        });
-
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            mobileMenuBtn.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
-        });
-
-        const backToTopButton = document.getElementById('backToTop');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        });
-
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-
-                if (mainNav.classList.contains('active')) {
-                    mainNav.classList.remove('active');
-                    mobileMenuBtn.textContent = '☰';
-                }
-            });
-        });
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyAKEIBthV_wcX0Omzqk97tITFqMx8hRGVA",
-            authDomain: "bolt-uplords.firebaseapp.com",
-            projectId: "bolt-uplords",
-            storageBucket: "bolt-uplords.firebasestorage.app",
-            messagingSenderId: "199484285040",
-            appId: "1:199484285040:web:5a28f158b5541cadad54b5"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-
-        function formatDate(timestamp) {
-            if (!timestamp) return 'N/A';
-
-            const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            return date.toLocaleDateString('en-US', options);
-        }
-
-        function formatRequirements(requirements) {
-            if (!requirements) return '';
-
-            if (typeof requirements === 'string') {
-                const reqArray = requirements.split(/,|\n/).filter(item => item.trim() !== '');
-                return reqArray.map(req => `<li>${req.trim()}</li>`).join('');
-            }
-
-            if (Array.isArray(requirements)) {
-                return requirements.map(req => `<li>${req.trim()}</li>`).join('');
-            }
-
-            return '';
-        }
-
-        async function fetchJobPositions() {
-            const jobPositionsGrid = document.getElementById('jobPositionsGrid');
-            const filterControls = document.getElementById('filterControls');
-
-            jobPositionsGrid.innerHTML = `
-                <div class="loading">
-                    <div class="loading-spinner"></div>
-                </div>
-            `;
-
-            try {
-                const querySnapshot = await db.collection("jobPositions").get();
-
-                jobPositionsGrid.innerHTML = '';
-
-                if (querySnapshot.empty) {
-                    jobPositionsGrid.innerHTML = `
-                        <div class="no-jobs-message">
-                            <i class="fas fa-briefcase"></i>
-                            <h3>No positions available</h3>
-                            <p>We don't have any open positions at the moment. Please check back later or send your resume for future opportunities.</p>
-                        </div>
-                    `;
-                    return;
-                }
-
-                const categories = new Set(['all']);
-
-                const jobs = [];
-                querySnapshot.forEach((doc) => {
-                    const data = doc.data();
-
-                    if (data.category) {
-                        categories.add(data.category.toLowerCase());
-                    }
-
-                    jobs.push({
-                        id: doc.id,
-                        ...data,
-                        category: data.category ? data.category.toLowerCase() : 'other'
-                    });
-                });
-
-                if (categories.size > 1) {
-                    const allButton = filterControls.querySelector('[data-filter="all"]');
-                    filterControls.innerHTML = '';
-                    filterControls.appendChild(allButton);
-
-                    categories.forEach(category => {
-                        if (category === 'all') return;
-
-                        const button = document.createElement('button');
-                        button.className = 'filter-btn';
-                        button.setAttribute('data-filter', category);
-                        button.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-
-                        button.addEventListener('click', () => {
-                            filterControls.querySelectorAll('.filter-btn').forEach(btn => {
-                                btn.classList.remove('active');
-                            });
-                            button.classList.add('active');
-                            filterJobs(category);
-                        });
-
-                        filterControls.appendChild(button);
-                    });
-                }
-
-                jobs.forEach((job, index) => {
-                    const jobCard = document.createElement('div');
-                    jobCard.className = 'job-position-card';
-                    jobCard.setAttribute('data-category', job.category || 'other');
-                    jobCard.setAttribute('data-aos', 'fade-up');
-                    jobCard.setAttribute('data-aos-delay', (index * 100).toString());
-
-                    const requirementsList = formatRequirements(job.requirements);
-
-                    const formattedDate = formatDate(job.createdAt);
-
-                    jobCard.innerHTML = `
-                        <span class="job-badge">${job.category || 'General'}</span>
-                        <h3 class="job-position-title">${job.title || 'Untitled Position'}</h3>
-                        <p class="job-position-description">${job.description || 'No description available.'}</p>
-
-                        <div class="job-meta">
-                            ${job.location ? `
-                            <div class="job-meta-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>${job.location}</span>
-                            </div>` : ''}
-                            <div class="job-meta-item">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>Posted: ${formattedDate}</span>
-                            </div>
-                        </div>
-
-                        ${requirementsList ? `
-                        <div class="job-requirements">
-                            <h4>Requirements:</h4>
-                            <ul>
-                                ${requirementsList}
-                            </ul>
-                        </div>` : ''}
-
-                        <div class="job-position-apply">
-                            <span class="job-date">${formattedDate}</span>
-                        </div>
-                    `;
-
-                    jobPositionsGrid.appendChild(jobCard);
-                });
-
-                AOS.refresh();
-
-                const allFilterBtn = document.querySelector('[data-filter="all"]');
-                if (allFilterBtn) {
-                    allFilterBtn.addEventListener('click', () => {
-                        filterControls.querySelectorAll('.filter-btn').forEach(btn => {
-                            btn.classList.remove('active');
-                        });
-                        allFilterBtn.classList.add('active');
-                        filterJobs('all');
-                    });
-                }
-
-            } catch (error) {
-                console.error('Error fetching job positions:', error);
-                jobPositionsGrid.innerHTML = `
-                    <div class="error-message">
-                        <i class="fas fa-exclamation-circle"></i>
-                        <h3>Error Loading Jobs</h3>
-                        <p>We encountered a problem while loading job positions. Please try again later.</p>
-                    </div>
-                `;
-            }
-        }
-
-        function filterJobs(category) {
-            const jobCards = document.querySelectorAll('.job-position-card');
-
-            jobCards.forEach(card => {
-                if (category === 'all') {
-                    card.style.display = 'block';
-                } else {
-                    const cardCategory = card.getAttribute('data-category');
-                    if (cardCategory === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                }
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            fetchJobPositions();
-        });
-    </script>
 </body>
 </html>
