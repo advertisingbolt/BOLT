@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Base Styles */
         :root {
             --primary: #4d9fff;
             --primary-dark: #3a7fcf;
@@ -33,7 +32,6 @@
             line-height: 1.6;
         }
 
-        /* Glass Effect Nav */
         .glass-nav {
             background: rgba(26, 26, 26, 0.8);
             backdrop-filter: blur(10px);
@@ -63,7 +61,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 20px;
         }
 
         .nav-link {
@@ -96,7 +94,6 @@
             color: white;
         }
 
-        /* Hero Section */
         .hero {
             min-height: 60vh;
             background: linear-gradient(135deg, rgba(77, 159, 255, 0.1), transparent);
@@ -147,7 +144,6 @@
             }
         }
 
-        /* Job Positions Section */
         .section-title {
             text-align: center;
             margin-bottom: 50px;
@@ -411,7 +407,6 @@
             opacity: 0.9;
         }
 
-        /* Filter Controls */
         .filter-controls {
             display: flex;
             justify-content: center;
@@ -438,7 +433,6 @@
             border-color: transparent;
         }
 
-        /* Enhanced Footer Section */
         .footer {
             padding: 80px 5% 30px;
             background: linear-gradient(to bottom, #0f0f0f, #050505);
@@ -668,7 +662,6 @@
             box-shadow: 0 5px 15px rgba(77, 159, 255, 0.4);
         }
 
-        /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -678,7 +671,6 @@
             cursor: pointer;
         }
 
-        /* Particles Animation */
         #particles-js {
             position: fixed;
             top: 0;
@@ -689,7 +681,6 @@
             pointer-events: none;
         }
 
-        /* Loading Animation */
         .loading {
             display: flex;
             justify-content: center;
@@ -710,7 +701,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* No Jobs Message */
         .no-jobs-message {
             text-align: center;
             padding: 40px;
@@ -738,7 +728,6 @@
             margin: 0 auto;
         }
 
-        /* Error Message */
         .error-message {
             text-align: center;
             padding: 40px;
@@ -766,12 +755,11 @@
             margin: 0 auto;
         }
 
-        /* Responsive Styles */
         @media (max-width: 1200px) {
             .job-positions-container {
                 flex-direction: column;
             }
-            
+
             .cta {
                 max-width: 100%;
                 margin-top: 30px;
@@ -782,11 +770,11 @@
             .job-positions-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
-            
+
             .hero h1 {
                 font-size: 48px;
             }
-            
+
             .section-title h2 {
                 font-size: 32px;
             }
@@ -825,7 +813,7 @@
             .hero h1 {
                 font-size: 36px;
             }
-            
+
             .hero p {
                 font-size: 16px;
             }
@@ -833,11 +821,11 @@
             .job-positions-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .section-title h2 {
                 font-size: 28px;
             }
-            
+
             .section-title p {
                 font-size: 16px;
             }
@@ -865,44 +853,44 @@
             .glass-nav {
                 padding: 15px 5%;
             }
-            
+
             .logo {
                 font-size: 20px;
             }
-            
+
             .hero {
                 padding: 100px 5% 50px;
             }
-            
+
             .hero h1 {
                 font-size: 32px;
             }
-            
+
             .job-position-card {
                 padding: 20px;
             }
-            
+
             .job-position-title {
                 font-size: 20px;
             }
-            
+
             .filter-controls {
                 gap: 10px;
             }
-            
+
             .filter-btn {
                 padding: 8px 15px;
                 font-size: 12px;
             }
-            
+
             .cta {
                 padding: 30px 20px;
             }
-            
+
             .cta h3 {
                 font-size: 22px;
             }
-            
+
             .cta-email {
                 font-size: 16px;
                 padding: 10px 20px;
@@ -911,10 +899,7 @@
     </style>
 </head>
 <body>
-    <!-- Particles Animation Background -->
     <div id="particles-js"></div>
-
-    <!-- Header -->
     <header class="glass-nav">
         <div class="logo">BOLT</div>
         <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
@@ -928,50 +913,40 @@
             </ul>
         </nav>
     </header>
-
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Career Opportunities</h1>
             <p>Join our team of innovators and help shape the future of digital marketing for D2C brands</p>
         </div>
     </section>
-
-    <!-- Job Positions Section -->
     <section class="job-positions">
         <div class="section-title">
             <h2>Open Positions</h2>
             <p>Discover your next career opportunity with BOLT</p>
         </div>
-
         <div class="filter-controls" id="filterControls">
             <button class="filter-btn active" data-filter="all">All Positions</button>
         </div>
-
         <div class="job-positions-container">
             <div class="job-positions-grid" id="jobPositionsGrid">
-                <!-- Loading spinner will show initially -->
                 <div class="loading">
                     <div class="loading-spinner"></div>
                 </div>
             </div>
-
             <div class="cta">
                 <i class="fas fa-paper-plane cta-icon"></i>
                 <h3>Ready to Apply?</h3>
                 <p>Send your resume and portfolio to our recruitment team</p>
-                <button 
-                    class="cta-email" 
+                <button
+                    class="cta-email"
                     onclick="window.location.href='mailto:advertisingbolt1@gmail.com';"
                 >
                     <i class="fas fa-envelope"></i>
-               advertisingbolt1@gmail.com
+ advertisingbolt1@gmail.com
                 </button>
             </div>
         </div>
     </section>
-
-    <!-- Enhanced Footer Section -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-column">
@@ -1004,20 +979,16 @@
             <i class="fas fa-chevron-up"></i>
         </div>
     </footer>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
     <script>
-        // Initialize AOS
         AOS.init({
             duration: 1000,
             once: true,
             offset: 100
         });
-
-        // Initialize Particles.js
         particlesJS('particles-js', {
             particles: {
                 number: {
@@ -1096,19 +1067,13 @@
             },
             retina_detect: true
         });
-
-        // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
-
         mobileMenuBtn.addEventListener('click', () => {
             mainNav.classList.toggle('active');
             mobileMenuBtn.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
         });
-
-        // Back to Top Button
         const backToTopButton = document.getElementById('backToTop');
-
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 backToTopButton.classList.add('visible');
@@ -1116,21 +1081,17 @@
                 backToTopButton.classList.remove('visible');
             }
         });
-
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
-
-        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     targetElement.scrollIntoView({
@@ -1138,15 +1099,12 @@
                         block: 'start'
                     });
                 }
-
                 if (mainNav.classList.contains('active')) {
                     mainNav.classList.remove('active');
                     mobileMenuBtn.textContent = '☰';
                 }
             });
         });
-
-        // Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyAKEIBthV_wcX0Omzqk97tITFqMx8hRGVA",
             authDomain: "bolt-uplords.firebaseapp.com",
@@ -1155,58 +1113,36 @@
             messagingSenderId: "199484285040",
             appId: "1:199484285040:web:5a28f158b5541cadad54b5"
         };
-
-        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
-
-        // Function to format date
         function formatDate(timestamp) {
             if (!timestamp) return 'N/A';
-
-            // If timestamp is a Firebase Timestamp, convert to JS Date
             const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             return date.toLocaleDateString('en-US', options);
         }
-
-        // Function to format requirements as list items
         function formatRequirements(requirements) {
             if (!requirements) return '';
-
-            // If requirements is a string, split by commas or new lines
             if (typeof requirements === 'string') {
                 const reqArray = requirements.split(/,|\n/).filter(item => item.trim() !== '');
                 return reqArray.map(req => `<li>${req.trim()}</li>`).join('');
             }
-
-            // If requirements is already an array
             if (Array.isArray(requirements)) {
                 return requirements.map(req => `<li>${req.trim()}</li>`).join('');
             }
-
             return '';
         }
-
-        // Function to fetch job positions from Firebase
         async function fetchJobPositions() {
             const jobPositionsGrid = document.getElementById('jobPositionsGrid');
             const filterControls = document.getElementById('filterControls');
-
-            // Show loading spinner
             jobPositionsGrid.innerHTML = `
                 <div class="loading">
                     <div class="loading-spinner"></div>
                 </div>
             `;
-
             try {
                 const querySnapshot = await db.collection("jobPositions").get();
-
-                // Clear loading spinner
                 jobPositionsGrid.innerHTML = '';
-
                 if (querySnapshot.empty) {
                     jobPositionsGrid.innerHTML = `
                         <div class="no-jobs-message">
@@ -1217,78 +1153,51 @@
                     `;
                     return;
                 }
-
-                // Extract unique categories for filter buttons
                 const categories = new Set(['all']);
-
-                // Process job data
                 const jobs = [];
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
-
-                    // Add category to set for filter buttons
                     if (data.category) {
                         categories.add(data.category.toLowerCase());
                     }
-
                     jobs.push({
                         id: doc.id,
                         ...data,
-                        // Ensure category is lowercase for filtering
                         category: data.category ? data.category.toLowerCase() : 'other'
                     });
                 });
-
-                // Generate filter buttons based on available categories
                 if (categories.size > 1) {
-                    // Keep the "All" button and clear the rest
                     const allButton = filterControls.querySelector('[data-filter="all"]');
                     filterControls.innerHTML = '';
                     filterControls.appendChild(allButton);
-
-                    // Add category buttons
                     categories.forEach(category => {
-                        if (category === 'all') return; // Skip 'all' as it's already added
-
+                        if (category === 'all') return;
                         const button = document.createElement('button');
                         button.className = 'filter-btn';
                         button.setAttribute('data-filter', category);
                         button.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-
                         button.addEventListener('click', () => {
-                            // Remove active class from all buttons
                             filterControls.querySelectorAll('.filter-btn').forEach(btn => {
                                 btn.classList.remove('active');
                             });
-                            // Add active class to clicked button
                             button.classList.add('active');
-                            // Filter jobs
                             filterJobs(category);
                         });
-
                         filterControls.appendChild(button);
                     });
                 }
-
-                // Display jobs
                 jobs.forEach((job, index) => {
                     const jobCard = document.createElement('div');
                     jobCard.className = 'job-position-card';
                     jobCard.setAttribute('data-category', job.category || 'other');
                     jobCard.setAttribute('data-aos', 'fade-up');
                     jobCard.setAttribute('data-aos-delay', (index * 100).toString());
-
-                    // Format requirements as list items
                     const requirementsList = formatRequirements(job.requirements);
-
-                    // Format date
                     const formattedDate = formatDate(job.createdAt);
-
                     jobCard.innerHTML = `
                         <span class="job-badge">${job.category || 'General'}</span>
                         <h3 class="job-position-title">${job.title || 'Untitled Position'}</h3>
                         <p class="job-position-description">${job.description || 'No description available.'}</p>
-
                         <div class="job-meta">
                             ${job.location ? `
                             <div class="job-meta-item">
@@ -1300,7 +1209,6 @@
                                 <span>Posted: ${formattedDate}</span>
                             </div>
                         </div>
-
                         ${requirementsList ? `
                         <div class="job-requirements">
                             <h4>Requirements:</h4>
@@ -1308,33 +1216,23 @@
                                 ${requirementsList}
                             </ul>
                         </div>` : ''}
-
                         <div class="job-position-apply">
                             <span class="job-date">${formattedDate}</span>
                         </div>
                     `;
-
                     jobPositionsGrid.appendChild(jobCard);
                 });
-
-                // Initialize AOS for dynamically added elements
                 AOS.refresh();
-
-                // Add click event to the "All" filter button
                 const allFilterBtn = document.querySelector('[data-filter="all"]');
                 if (allFilterBtn) {
                     allFilterBtn.addEventListener('click', () => {
-                        // Remove active class from all buttons
                         filterControls.querySelectorAll('.filter-btn').forEach(btn => {
                             btn.classList.remove('active');
                         });
-                        // Add active class to "All" button
                         allFilterBtn.classList.add('active');
-                        // Show all jobs
                         filterJobs('all');
                     });
                 }
-
             } catch (error) {
                 console.error('Error fetching job positions:', error);
                 jobPositionsGrid.innerHTML = `
@@ -1346,11 +1244,8 @@
                 `;
             }
         }
-
-        // Function to filter jobs by category
         function filterJobs(category) {
             const jobCards = document.querySelectorAll('.job-position-card');
-
             jobCards.forEach(card => {
                 if (category === 'all') {
                     card.style.display = 'block';
@@ -1364,8 +1259,6 @@
                 }
             });
         }
-
-        // Fetch job positions when the page loads
         document.addEventListener('DOMContentLoaded', () => {
             fetchJobPositions();
         });
