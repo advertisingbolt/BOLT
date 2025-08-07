@@ -18,34 +18,30 @@
             --text-muted: #cccccc;
             --border: #333;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-
         body {
             background-color: var(--bg-dark);
             color: var(--text);
             overflow-x: hidden;
             line-height: 1.6;
         }
-
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
         }
-
         section {
             padding: 80px 0;
             position: relative;
             overflow: hidden;
         }
 
-        /* Glass Effect */
+        /* Navigation Bar Styles */
         .glass-nav {
             background: rgba(26, 26, 26, 0.8);
             backdrop-filter: blur(10px);
@@ -62,7 +58,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Logo */
         .logo {
             font-size: 24px;
             font-weight: 800;
@@ -73,7 +68,6 @@
             letter-spacing: 2px;
         }
 
-        /* Navigation */
         nav ul {
             display: flex;
             list-style: none;
@@ -81,12 +75,11 @@
         }
 
         .nav-link {
-            position: relative;
             color: var(--text);
             text-decoration: none;
+            font-size: 16px;
+            position: relative;
             padding: 5px 0;
-            font-weight: 500;
-            transition: color 0.3s ease;
         }
 
         .nav-link::after {
@@ -111,8 +104,43 @@
             color: white;
         }
 
-        .nav-link.highlight::after {
+        /* Mobile Menu */
+        .mobile-menu-btn {
             display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(26, 26, 26, 0.95);
+                padding: 0;
+                height: 0;
+                overflow: hidden;
+                transition: height 0.3s ease;
+            }
+
+            nav.active {
+                height: auto;
+                padding: 20px 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
         }
 
         /* Hero Section */
@@ -607,16 +635,6 @@
             box-shadow: 0 5px 15px rgba(77, 159, 255, 0.4);
         }
 
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 24px;
-            cursor: pointer;
-        }
-
         /* Particles Animation */
         #particles-js {
             position: fixed;
@@ -651,35 +669,6 @@
         }
 
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            nav {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: rgba(26, 26, 26, 0.95);
-                height: 0;
-                overflow: hidden;
-                transition: height 0.3s ease;
-            }
-
-            nav.active {
-                height: auto;
-            }
-
-            nav ul {
-                flex-direction: column;
-                padding: 20px 0;
-                align-items: center;
-            }
-
-            nav ul li {
-                margin: 10px 0;
-            }
-
             .hero h1 {
                 font-size: 40px;
             }
@@ -725,7 +714,6 @@
 </head>
 <body>
     <div class="scroll-progress" id="scrollProgress"></div>
-
     <!-- Header -->
     <header class="glass-nav">
         <div class="logo">BOLT</div>
@@ -744,7 +732,6 @@
             </ul>
         </nav>
     </header>
-
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content" data-aos="fade-right">
@@ -775,7 +762,6 @@
         </div>
         <div class="hero-particles" id="particles-js"></div>
     </section>
-
     <section class="services" id="capabilities">
         <h2 class="section-title" data-aos="fade-up">Capabilities</h2>
         <div class="services-grid">
@@ -865,7 +851,6 @@
             </div>
         </div>
     </section>
-
     <!-- Stats Section -->
     <section class="stats">
         <div class="container">
@@ -879,10 +864,6 @@
                     <div class="stat-number" data-suffix="+">25+</div>
                     <div class="stat-text">Clients Served</div>
                 </div>
-<!--                 <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="stat-number" data-suffix="+">100+</div>
-                    <div class="stat-text">Partners across the globe</div>
-                </div> -->
                 <div class="stat-item" data-aos="fade-up" data-aos-delay="600">
                     <div class="stat-number" data-suffix="+">500+</div>
                     <div class="stat-text">Leads Converted</div>
@@ -891,7 +872,6 @@
         </div>
     </section>
 
-  
     <section class="contact" id="contact">
         <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
         <div class="contact-container">
@@ -933,7 +913,6 @@
             </div>
         </div>
     </section>
-
     <!-- Enhanced Footer Section -->
     <footer class="footer">
         <div class="footer-content">
@@ -967,7 +946,6 @@
             </div>
         </div>
     </footer>
-
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -977,22 +955,18 @@
             apiKey: "AIzaSyAkDl3ckFSXDHlZpyR0s7IZ1UTSX8Z6hSY",
             authDomain: "bolt-54408.firebaseapp.com",
             projectId: "bolt-54408",
-            storageBucket: "bolt-54408.firebasestorage.app",
+            storageBucket: "bolt-54408.appspot.com",
             messagingSenderId: "88291790006",
             appId: "1:88291790006:web:259387f2de1d7b164eaa17",
             measurementId: "G-6YD4D3514J"
         };
-
         firebase.initializeApp(firebaseConfig);
-
         const db = firebase.firestore();
-
         AOS.init({
             duration: 1000,
             once: true,
             offset: 100
         });
-
         particlesJS('particles-js', {
             particles: {
                 number: {
@@ -1049,21 +1023,17 @@
             },
             retina_detect: true
         });
-
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
-
         mobileMenuBtn.addEventListener('click', () => {
             mainNav.classList.toggle('active');
             mobileMenuBtn.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
         });
-
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     targetElement.scrollIntoView({
@@ -1071,39 +1041,32 @@
                         block: 'start'
                     });
                 }
-
                 if (mainNav.classList.contains('active')) {
                     mainNav.classList.remove('active');
                     mobileMenuBtn.textContent = '☰';
                 }
             });
         });
-
         const scrollProgress = document.getElementById('scrollProgress');
         window.addEventListener('scroll', () => {
             const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (window.scrollY / windowHeight) * 100;
             scrollProgress.style.transform = `scaleX(${scrolled / 100})`;
         });
-
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-
                 const button = this.querySelector('button[type="submit"]');
                 const originalText = button.innerHTML;
-
                 button.innerHTML = '<span class="loading"></span>';
                 button.disabled = true;
-
                 const name = document.getElementById('name').value;
                 const email = document.getElementById('email').value;
                 const appointmentDate = document.getElementById('appointment-date').value;
                 const appointmentTime = document.getElementById('appointment-time').value;
                 const phone = document.getElementById('phone').value;
                 const message = document.getElementById('message').value;
-
                 db.collection('contacts').add({
                     name: name,
                     email: email,
@@ -1116,7 +1079,6 @@
                 .then(() => {
                     button.innerHTML = '✓ Message Sent!';
                     contactForm.reset();
-
                     setTimeout(() => {
                         button.innerHTML = originalText;
                         button.disabled = false;
@@ -1125,7 +1087,6 @@
                 .catch((error) => {
                     console.error("Error adding document: ", error);
                     button.innerHTML = '❌ Error! Try Again';
-
                     setTimeout(() => {
                         button.innerHTML = originalText;
                         button.disabled = false;
@@ -1133,11 +1094,9 @@
                 });
             });
         }
-
         const observerOptions = {
             threshold: 0.5
         };
-
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1146,22 +1105,18 @@
                 }
             });
         }, observerOptions);
-
         const statsSection = document.querySelector('.stats');
         if (statsSection) {
             statsObserver.observe(statsSection);
         }
-
         function animateStats() {
             const stats = document.querySelectorAll('.stat-number');
-
             stats.forEach(stat => {
                 const targetValue = parseInt(stat.textContent);
                 let currentValue = 0;
                 const duration = 2000;
                 const increment = targetValue / (duration / 16);
                 const suffix = stat.getAttribute('data-suffix') || '';
-
                 function updateCounter() {
                     if (currentValue < targetValue) {
                         currentValue += increment;
@@ -1171,15 +1126,12 @@
                         stat.textContent = targetValue + suffix;
                     }
                 }
-
                 stat.classList.add('visible');
                 updateCounter();
             });
         }
-
         // Back to Top Button
         const backToTopButton = document.getElementById('backToTop');
-
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 backToTopButton.classList.add('visible');
@@ -1187,7 +1139,6 @@
                 backToTopButton.classList.remove('visible');
             }
         });
-
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
