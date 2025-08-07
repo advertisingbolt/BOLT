@@ -34,6 +34,7 @@
         .glass-nav {
             background: rgba(26, 26, 26, 0.8);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             position: fixed;
             width: 100%;
@@ -56,16 +57,10 @@
             letter-spacing: 2px;
         }
 
-        nav {
-            display: block;
-        }
-
         nav ul {
             display: flex;
             list-style: none;
-            gap: 0; /* Changed from 30px to 0 */
-            margin: 0;
-            padding: 0;
+            gap: 30px;
         }
 
         .nav-link {
@@ -73,7 +68,7 @@
             text-decoration: none;
             font-size: 16px;
             position: relative;
-            padding: 5px 15px; /* Added horizontal padding */
+            padding: 5px 0;
         }
 
         .nav-link::after {
@@ -96,6 +91,45 @@
             padding: 8px 16px;
             border-radius: 20px;
             color: white;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(26, 26, 26, 0.95);
+                padding: 0;
+                height: 0;
+                overflow: hidden;
+                transition: height 0.3s ease;
+            }
+
+            nav.active {
+                height: auto;
+                padding: 20px 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
         }
 
         /* Hero Section */
@@ -667,15 +701,6 @@
             box-shadow: 0 5px 15px rgba(77, 159, 255, 0.4);
         }
 
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 24px;
-            cursor: pointer;
-        }
-
         #particles-js {
             position: fixed;
             top: 0;
@@ -786,35 +811,6 @@
         }
 
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
- 
-            nav {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: rgba(26, 26, 26, 0.95);
-                padding: 0;
-                height: 0;
-                overflow: hidden;
-                transition: height 0.3s ease;
-                z-index: 1000;
-            }
-
-            nav.active {
-                height: auto;
-                padding: 20px 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px; /* Restore gap for mobile menu */
-            }
-
             .hero h1 {
                 font-size: 36px;
             }
@@ -943,12 +939,9 @@
                 <i class="fas fa-paper-plane cta-icon"></i>
                 <h3>Ready to Apply?</h3>
                 <p>Send your resume and portfolio to our recruitment team</p>
-                <button
-                    class="cta-email"
-                    onclick="window.location.href='mailto:advertisingbolt1@gmail.com';"
-                >
+                <button class="cta-email" onclick="window.location.href='mailto:advertisingbolt1@gmail.com';">
                     <i class="fas fa-envelope"></i>
-                   advertisingbolt1@gmail.com
+                    advertisingbolt1@gmail.com
                 </button>
             </div>
         </div>
@@ -985,22 +978,15 @@
             <i class="fas fa-chevron-up"></i>
         </div>
     </footer>
-
     <script>
-        // Initialize AOS (Animate on Scroll)
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu functionality
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mainNav = document.getElementById('mainNav');
-
             mobileMenuBtn.addEventListener('click', () => {
                 mainNav.classList.toggle('active');
                 mobileMenuBtn.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
             });
-
-            // Back to top button
             const backToTopButton = document.getElementById('backToTop');
-
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 300) {
                     backToTopButton.classList.add('visible');
@@ -1008,21 +994,17 @@
                     backToTopButton.classList.remove('visible');
                 }
             });
-
             backToTopButton.addEventListener('click', () => {
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
                 });
             });
-
-            // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     if (targetId === '#') return;
-
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         targetElement.scrollIntoView({
@@ -1030,15 +1012,12 @@
                             block: 'start'
                         });
                     }
-
                     if (mainNav.classList.contains('active')) {
                         mainNav.classList.remove('active');
                         mobileMenuBtn.textContent = '☰';
                     }
                 });
             });
-
-            // Initialize particles.js
             particlesJS('particles-js', {
                 particles: {
                     number: {
@@ -1117,63 +1096,44 @@
                 },
                 retina_detect: true
             });
-
-            // Firebase configuration
             const firebaseConfig = {
                 apiKey: "AIzaSyAKEIBthV_wcX0Omzqk97tITFqMx8hRGVA",
                 authDomain: "bolt-uplords.firebaseapp.com",
                 projectId: "bolt-uplords",
-                storageBucket: "bolt-uplords.firebasestorage.app",
+                storageBucket: "bolt-uplords.appspot.com",
                 messagingSenderId: "199484285040",
                 appId: "1:199484285040:web:5a28f158b5541cadad54b5"
             };
-
-            // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
             const db = firebase.firestore();
-
-            // Format date function
             function formatDate(timestamp) {
                 if (!timestamp) return 'N/A';
-
                 const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-
                 const options = { year: 'numeric', month: 'long', day: 'numeric' };
                 return date.toLocaleDateString('en-US', options);
             }
-
-            // Format requirements function
             function formatRequirements(requirements) {
                 if (!requirements) return '';
-
                 if (typeof requirements === 'string') {
                     const reqArray = requirements.split(/,|\n/).filter(item => item.trim() !== '');
                     return reqArray.map(req => `<li>${req.trim()}</li>`).join('');
                 }
-
                 if (Array.isArray(requirements)) {
                     return requirements.map(req => `<li>${req.trim()}</li>`).join('');
                 }
-
                 return '';
             }
-
-            // Fetch job positions
             async function fetchJobPositions() {
                 const jobPositionsGrid = document.getElementById('jobPositionsGrid');
                 const filterControls = document.getElementById('filterControls');
-
                 jobPositionsGrid.innerHTML = `
                     <div class="loading">
                         <div class="loading-spinner"></div>
                     </div>
                 `;
-
                 try {
                     const querySnapshot = await db.collection("jobPositions").get();
-
                     jobPositionsGrid.innerHTML = '';
-
                     if (querySnapshot.empty) {
                         jobPositionsGrid.innerHTML = `
                             <div class="no-jobs-message">
@@ -1184,37 +1144,29 @@
                         `;
                         return;
                     }
-
                     const categories = new Set(['all']);
-
                     const jobs = [];
                     querySnapshot.forEach((doc) => {
                         const data = doc.data();
-
                         if (data.category) {
                             categories.add(data.category.toLowerCase());
                         }
-
                         jobs.push({
                             id: doc.id,
                             ...data,
                             category: data.category ? data.category.toLowerCase() : 'other'
                         });
                     });
-
                     if (categories.size > 1) {
                         const allButton = filterControls.querySelector('[data-filter="all"]');
                         filterControls.innerHTML = '';
                         filterControls.appendChild(allButton);
-
                         categories.forEach(category => {
                             if (category === 'all') return;
-
                             const button = document.createElement('button');
                             button.className = 'filter-btn';
                             button.setAttribute('data-filter', category);
                             button.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-
                             button.addEventListener('click', () => {
                                 filterControls.querySelectorAll('.filter-btn').forEach(btn => {
                                     btn.classList.remove('active');
@@ -1222,27 +1174,21 @@
                                 button.classList.add('active');
                                 filterJobs(category);
                             });
-
                             filterControls.appendChild(button);
                         });
                     }
-
                     jobs.forEach((job, index) => {
                         const jobCard = document.createElement('div');
                         jobCard.className = 'job-position-card';
                         jobCard.setAttribute('data-category', job.category || 'other');
                         jobCard.setAttribute('data-aos', 'fade-up');
                         jobCard.setAttribute('data-aos-delay', (index * 100).toString());
-
                         const requirementsList = formatRequirements(job.requirements);
-
                         const formattedDate = formatDate(job.createdAt);
-
                         jobCard.innerHTML = `
                             <span class="job-badge">${job.category || 'General'}</span>
                             <h3 class="job-position-title">${job.title || 'Untitled Position'}</h3>
                             <p class="job-position-description">${job.description || 'No description available.'}</p>
-
                             <div class="job-meta">
                                 ${job.location ? `
                                 <div class="job-meta-item">
@@ -1254,7 +1200,6 @@
                                     <span>Posted: ${formattedDate}</span>
                                 </div>
                             </div>
-
                             ${requirementsList ? `
                             <div class="job-requirements">
                                 <h4>Requirements:</h4>
@@ -1262,20 +1207,15 @@
                                     ${requirementsList}
                                 </ul>
                             </div>` : ''}
-
                             <div class="job-position-apply">
                                 <span class="job-date">${formattedDate}</span>
                             </div>
                         `;
-
                         jobPositionsGrid.appendChild(jobCard);
                     });
-
-                    // Initialize AOS
                     if (typeof AOS !== 'undefined') {
                         AOS.refresh();
                     }
-
                     const allFilterBtn = document.querySelector('[data-filter="all"]');
                     if (allFilterBtn) {
                         allFilterBtn.addEventListener('click', () => {
@@ -1286,7 +1226,6 @@
                             filterJobs('all');
                         });
                     }
-
                 } catch (error) {
                     console.error('Error fetching job positions:', error);
                     jobPositionsGrid.innerHTML = `
@@ -1298,11 +1237,8 @@
                     `;
                 }
             }
-
-            // Filter jobs function
             function filterJobs(category) {
                 const jobCards = document.querySelectorAll('.job-position-card');
-
                 jobCards.forEach(card => {
                     if (category === 'all') {
                         card.style.display = 'block';
@@ -1316,8 +1252,6 @@
                     }
                 });
             }
-
-            // Initialize job positions
             fetchJobPositions();
         });
     </script>
