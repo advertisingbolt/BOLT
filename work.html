@@ -1,6 +1,5 @@
-<!DOCTYPE
-html >
-  <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,6 +94,45 @@ html >
             padding: 8px 16px;
             border-radius: 20px;
             color: white;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(26, 26, 26, 0.95);
+                padding: 0;
+                height: 0;
+                overflow: hidden;
+                transition: height 0.3s ease;
+            }
+
+            nav.active {
+                height: auto;
+                padding: 20px 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
         }
 
         /* Hero Section */
@@ -524,16 +562,6 @@ html >
         .back-to-top:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(77, 159, 255, 0.4);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 24px;
-            cursor: pointer;
         }
 
         /* Particles Animation */
@@ -995,30 +1023,26 @@ html >
 <body>
     <!-- Particles Animation Background -->
     <div id="particles-js"></div>
-
     <!-- Header -->
     <header class="glass-nav">
         <div class="logo">BOLT</div>
         <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
         <nav id="mainNav">
             <ul>
-               <li><a href="index.html" class="nav-link">Capabilities</a></li>
+                <li><a href="index.html" class="nav-link">Capabilities</a></li>
                 <li><a href="work.html" class="nav-link">Work</a></li>
-                <li><a href="carrer.html" class="nav-link">Career</a></li>
+                <li><a href="career.html" class="nav-link">Career</a></li>
                 <li><a href="partner.html" class="nav-link">Partnerships</a></li>
-                 <a href="https://wa.me/9322806598" class="nav-link highlight" target="_blank">
-                        Chat on WhatsApp</a>
+                <li><a href="https://wa.me/9322806598" class="nav-link highlight" target="_blank">Chat on WhatsApp</a></li>
             </ul>
         </nav>
     </header>
-
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Our Work</h1>
         </div>
     </section>
-
     <!-- Media Gallery Section - IMPROVED -->
     <section class="media-gallery">
         <h2 class="media-gallery-title">Media Gallery</h2>
@@ -1027,7 +1051,6 @@ html >
                 <div class="loading-spinner"></div>
             </div>
         </div>
-
         <!-- Video Modal -->
         <div class="video-modal" id="videoModal">
             <div class="video-container">
@@ -1036,16 +1059,13 @@ html >
             </div>
         </div>
     </section>
-
     <!-- Testimonials Section - SIMPLIFIED -->
     <section class="testimonials">
         <h2 class="testimonials-title">Testimonials</h2>
-
         <div class="testimonial-slider-container">
             <div class="testimonial-slider" id="testimonialSlider">
                 <!-- Testimonials will be loaded here -->
             </div>
-
             <div class="testimonial-nav">
                 <button class="testimonial-nav-btn" id="prevTestimonial">
                     <i class="fas fa-chevron-left"></i>
@@ -1054,13 +1074,11 @@ html >
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
-
             <div class="testimonial-dots" id="testimonialDots">
                 <!-- Dots will be generated here -->
             </div>
         </div>
     </section>
-
     <!-- Stats Section -->
     <section class="stats">
         <div class="stats-grid">
@@ -1078,7 +1096,6 @@ html >
             </div>
         </div>
     </section>
-
     <!-- Enhanced Footer Section -->
     <footer class="footer">
         <div class="footer-content">
@@ -1112,7 +1129,6 @@ html >
             <i class="fas fa-chevron-up"></i>
         </div>
     </footer>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script type="module">
@@ -1122,12 +1138,12 @@ html >
 
         // Firebase configuration
         const firebaseConfig = {
-           apiKey: "AIzaSyAKEIBthV_wcX0Omzqk97tITFqMx8hRGVA",
-           authDomain: "bolt-uplords.firebaseapp.com",
-           projectId: "bolt-uplords",
-           storageBucket: "bolt-uplords.firebasestorage.app",
-           messagingSenderId: "199484285040",
-           appId: "1:199484285040:web:5a28f158b5541cadad54b5"
+            apiKey: "AIzaSyAKEIBthV_wcX0Omzqk97tITFqMx8hRGVA",
+            authDomain: "bolt-uplords.firebaseapp.com",
+            projectId: "bolt-uplords",
+            storageBucket: "bolt-uplords.appspot.com",
+            messagingSenderId: "199484285040",
+            appId: "1:199484285040:web:5a28f158b5541cadad54b5"
         };
 
         // Initialize Firebase
@@ -1137,7 +1153,6 @@ html >
         // Function to extract YouTube Video ID
         function getYouTubeID(url) {
             if (!url) return null;
-
             if (url.includes("youtu.be/")) {
                 return url.split("youtu.be/")[1].split("?")[0];
             } else if (url.includes("watch?v=")) {
@@ -1175,13 +1190,10 @@ html >
         // Fetch media from Firestore
         async function fetchMedia() {
             const gallery = document.getElementById("gallery");
-
             try {
                 // Clear loading indicator
                 gallery.innerHTML = '';
-
                 const querySnapshot = await getDocs(collection(db, "uploads"));
-
                 if (querySnapshot.empty) {
                     gallery.innerHTML = `
                         <div style="grid-column: 1/-1; text-align: center; padding: 50px 20px;">
@@ -1192,14 +1204,11 @@ html >
                     `;
                     return;
                 }
-
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
                     const videoID = getYouTubeID(data.link);
-
                     const mediaItem = document.createElement("div");
                     mediaItem.classList.add("media-item");
-
                     if (videoID) {
                         // YouTube Thumbnail
                         const thumbnailURL = `https://img.youtube.com/vi/${videoID}/hqdefault.jpg`;
@@ -1212,7 +1221,6 @@ html >
                                 <p class="media-description">${data.description || 'No description available'}</p>
                             </div>
                         `;
-
                         mediaItem.addEventListener('click', () => {
                             openVideoModal(videoID);
                         });
@@ -1228,7 +1236,6 @@ html >
                             </div>
                         `;
                     }
-
                     gallery.appendChild(mediaItem);
                 });
             } catch (error) {
@@ -1247,14 +1254,11 @@ html >
         async function fetchTestimonials() {
             const testimonialSlider = document.getElementById("testimonialSlider");
             const testimonialDots = document.getElementById("testimonialDots");
-
             try {
                 // Clear loading indicator
                 testimonialSlider.innerHTML = '';
                 testimonialDots.innerHTML = '';
-
                 const querySnapshot = await getDocs(collection(db, "testimonials"));
-
                 if (querySnapshot.empty) {
                     testimonialSlider.innerHTML = `
                         <div class="testimonial-item">
@@ -1265,12 +1269,10 @@ html >
                             </div>
                         </div>
                     `;
-
                     // Hide navigation if no testimonials
                     document.querySelector('.testimonial-nav').style.display = 'none';
                     return;
                 }
-
                 let testimonials = [];
                 querySnapshot.forEach((doc) => {
                     testimonials.push({
@@ -1278,12 +1280,10 @@ html >
                         ...doc.data()
                     });
                 });
-
                 // Create testimonial slides
                 testimonials.forEach((testimonial, index) => {
                     const testimonialItem = document.createElement("div");
                     testimonialItem.classList.add("testimonial-item");
-
                     testimonialItem.innerHTML = `
                         <div class="testimonial-content">
                             ${testimonial.imageUrl ? `<img src="${testimonial.imageUrl}" alt="${testimonial.name || 'Testimonial'}" class="testimonial-image">` : ''}
@@ -1292,22 +1292,17 @@ html >
                             <p class="testimonial-description">${testimonial.description || 'No description available'}</p>
                         </div>
                     `;
-
                     testimonialSlider.appendChild(testimonialItem);
-
                     // Create dot for this testimonial
                     const dot = document.createElement("div");
                     dot.classList.add("testimonial-dot");
                     if (index === 0) dot.classList.add("active");
-
                     dot.addEventListener("click", () => {
                         currentTestimonial = index;
                         updateTestimonialSlider();
                     });
-
                     testimonialDots.appendChild(dot);
                 });
-
                 // Hide navigation if only one testimonial
                 if (testimonials.length <= 1) {
                     document.querySelector('.testimonial-nav').style.display = 'none';
@@ -1327,7 +1322,6 @@ html >
                         </div>
                     </div>
                 `;
-
                 // Hide navigation if error
                 document.querySelector('.testimonial-nav').style.display = 'none';
                 document.querySelector('.testimonial-dots').style.display = 'none';
@@ -1341,19 +1335,15 @@ html >
         function initTestimonialSlider() {
             const prevBtn = document.getElementById('prevTestimonial');
             const nextBtn = document.getElementById('nextTestimonial');
-
             prevBtn.addEventListener('click', prevTestimonial);
             nextBtn.addEventListener('click', nextTestimonial);
-
             // Auto-advance testimonials
             startTestimonialInterval();
-
             // Pause auto-advance on hover
             const sliderContainer = document.querySelector('.testimonial-slider-container');
             sliderContainer.addEventListener('mouseenter', () => {
                 clearInterval(testimonialInterval);
             });
-
             sliderContainer.addEventListener('mouseleave', () => {
                 startTestimonialInterval();
             });
@@ -1369,37 +1359,27 @@ html >
         function prevTestimonial() {
             const testimonialItems = document.querySelectorAll('.testimonial-item');
             if (testimonialItems.length <= 1) return;
-
             currentTestimonial--;
             if (currentTestimonial < 0) {
                 currentTestimonial = testimonialItems.length - 1;
             }
-
             updateTestimonialSlider();
         }
 
         function nextTestimonial() {
             const testimonialItems = document.querySelectorAll('.testimonial-item');
             if (testimonialItems.length <= 1) return;
-
             currentTestimonial++;
             if (currentTestimonial >= testimonialItems.length) {
                 currentTestimonial = 0;
             }
-
             updateTestimonialSlider();
         }
 
         function updateTestimonialSlider() {
             const slider = document.getElementById('testimonialSlider');
             const testimonialItems = document.querySelectorAll('.testimonial-item');
-            let width = testimonialItems[0].offsetWidth;
-            let min = 0;
-            let height = testimonialItems[0].offsetHeight;
-            let from = 0;
-            let transform = 0;
             slider.style.transform = `translateX(-${currentTestimonial * 100}%)`;
-
             // Update dots
             const dots = document.querySelectorAll('.testimonial-dot');
             dots.forEach((dot, index) => {
@@ -1506,7 +1486,6 @@ html >
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mainNav = document.getElementById('mainNav');
-
         mobileMenuBtn.addEventListener('click', () => {
             mainNav.classList.toggle('active');
             mobileMenuBtn.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
@@ -1514,7 +1493,6 @@ html >
 
         // Stats Counter Animation
         const stats = document.querySelectorAll('.stat-number');
-
         function animateValue(element, start, end, duration) {
             let startTimestamp = null;
             const step = (timestamp) => {
@@ -1547,7 +1525,6 @@ html >
 
         // Back to Top Button
         const backToTopButton = document.getElementById('backToTop');
-
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 backToTopButton.classList.add('visible');
@@ -1569,7 +1546,6 @@ html >
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     targetElement.scrollIntoView({
@@ -1577,7 +1553,6 @@ html >
                         block: 'start'
                     });
                 }
-
                 if (mainNav.classList.contains('active')) {
                     mainNav.classList.remove('active');
                     mobileMenuBtn.textContent = '☰';
